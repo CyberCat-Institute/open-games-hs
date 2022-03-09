@@ -67,7 +67,6 @@ dependencies:
     - mwc-random
     - random
     - vector
-    - monad-bayes
     - criterion
 
 

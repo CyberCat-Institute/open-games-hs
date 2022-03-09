@@ -20,9 +20,11 @@ module Engine.Engine
   , pureAction
   , playDeterministically
   , discount
+  , addPayoffs
   , DiagnosticInfoBayesian(..)
   , generateOutput
   , generateIsEq
+  , generateEquilibrium
   , OpenGame(..)
   , lift
   , reindex

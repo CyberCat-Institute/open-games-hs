@@ -13,6 +13,8 @@ module Engine.OpticClass
   , StochasticContext(..)
   , MonadOptic(..)
   , MonadContext(..)
+  , MonadOpticLearning(..)
+  , MonadContextLearning(..)
   , Optic(..)
   , Precontext(..)
   , Context(..)
@@ -208,3 +210,42 @@ instance Context MonadContext MonadOptic where
             = let h' = do {(z, (s1, s2)) <- h; return ((z, s2), s1)}
                   k' (z, s2) a1 = do {(_, a2) <- lift (v s2); (b1, _) <- k z (a1, a2); return b1}
                in MonadContext h' k'
+
+-- Provide a monadic optic for the external environment
+-- Used in the external rlib learning integration
+-- NOTE missing (++++) operator
+data MonadOpticLearning m s t a b where
+  MonadOpticLearning :: Monad m => (s -> m (z, a))
+                          -> (z -> b -> m t)
+                          -> MonadOpticLearning m s t a b
+
+instance Monad m => Optic (MonadOpticLearning m) where
+  lens v u = MonadOpticLearning (\s -> return (s, v s)) (\s b -> return (u s b))
+  (>>>>) (MonadOpticLearning v1 u1) (MonadOpticLearning v2 u2) = MonadOpticLearning v u
+    where v s = do {(z1, a) <- v1 s; (z2, p) <- v2 a; return ((z1, z2), p)}
+          u (z1, z2) q = do {b <- u2 z2 q; u1 z1 b}
+  (&&&&) (MonadOpticLearning v1 u1) (MonadOpticLearning v2 u2) = MonadOpticLearning v u
+    where v (s1, s2) = do {(z1, a1) <- v1 s1; (z2, a2) <- v2 s2; return ((z1, z2), (a1, a2))}
+          u (z1, z2) (b1, b2) = do {t1 <- u1 z1 b1; t2 <- u2 z2 b2; return (t1, t2)}
+
+data MonadContextLearning m s t a b where
+  MonadContextLearning :: (Monad m, Show z) => m (z, s) -> (z -> a -> m b) -> MonadContextLearning m s t a b
+
+instance Monad m => Precontext (MonadContextLearning m) where
+  void = MonadContextLearning (return ((), ())) (\() () -> return ())
+
+instance Monad m => Context (MonadContextLearning m)  (MonadOpticLearning m) where
+  cmap (MonadOpticLearning v1 u1) (MonadOpticLearning v2 u2) (MonadContextLearning h k)
+            = let h' = do {(z, s) <- h; (_, s') <- v1 s; return (z, s')}
+                  k' z a = do {(z', a') <- (v2 a); b' <- k z a'; u2 z' b'}
+               in MonadContextLearning h' k'
+  (//) (MonadOpticLearning v u) (MonadContextLearning h k)
+            = let h' = do {(z, (s1, s2)) <- h; return ((z, s1), s2)}
+                  k' (z, s1) a2 = do {(_, a1) <- (v s1); (_, b2) <- k z (a1, a2); return b2}
+               in MonadContextLearning h' k'
+  (\\) (MonadOpticLearning v u) (MonadContextLearning h k)
+            = let h' = do {(z, (s1, s2)) <- h; return ((z, s2), s1)}
+                  k' (z, s2) a1 = do {(_, a2) <- (v s2); (b1, _) <- k z (a1, a2); return b1}
+               in MonadContextLearning h' k'
+
+

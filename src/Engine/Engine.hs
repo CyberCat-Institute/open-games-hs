@@ -38,6 +38,8 @@ module Engine.Engine
   , StochasticContext(..)
   , MonadOptic(..)
   , MonadContext(..)
+  , MonadOpticLearning(..)
+  , MonadContextLearning(..)
   , Optic(..)
   , Precontext(..)
   , Context(..)

@@ -19,7 +19,6 @@ extra-source-files:
 
 library
   exposed-modules:
-      Data.Utils
       Engine.AtomicGames
       Engine.BayesianGames
       Engine.Diagnostics
@@ -51,6 +50,7 @@ library
       Examples.Markov.TestSimpleMonteCarlo.Continuation
       Graphics
   other-modules:
+      Data.Utils
       Engine.BayesianGamesNonState
       Engine.IOGames
       Examples.Markov.NStageMarkov

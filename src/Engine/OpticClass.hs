@@ -168,8 +168,8 @@ instance ContextAdd StochasticContext where
 
 
 -- Experimental non Stochastic
--- Same as used in learning implementation
--- Can be used for IO as well
+-- Used for IOGames
+-- NOTE: Keeps the StateT for payoffs
 data MonadOptic s t a b where
   MonadOptic :: (s -> IO (z, a))
                           -> (z -> b -> StateT Vector IO t)

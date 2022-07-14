@@ -11,15 +11,11 @@ The essential innovation is the decomposition of strategic interactions into ato
 
 The software has two main components: (i) it enables users to represent strategic interactions and (ii) it enables them to analyze these games, typically checking whether a particular strategy is in equilibrium.
 
-NOTE: In its current form, compositional game theory is essentially a programmable reincarnation of classical game theory. The models you can generate with it can also be generated with classical game theory. What is different is *how* one approaches that modelling task: it becomes a programming task.
-
-This has two main consequences:
-
-Hence: What we get here is mostly good ol' game theory -- but in a very different form. If you expect a "different" kind of theory, you are (for now) looking in the wrong place. If you are looking for "new" theory (i.e. proving novel theorems), you are also in the wrong place.
+NOTE: The models we consider in this tutorial could be easily expressed in classical game theory. This is of course intentional as it (hopefully!) makes it easier to understand how to model using this engine. Moreover, a model represented in compositional game theory *in theory* often will be representable in classical game theory. The question is whether it is then practical to do so. In compositional game theory, it is natural to apply a divide-and-conquer strategy and cut the overall problem into parts, model the isolated parts and then address the connections between these parts. Like in programming more generally, this allows to deal with complex problems and enables the modelling of larger games. Lastly, the engine is not limited to game-theoretic analyses but can also be used in a broader sense, e.g. for simulation, modelling learning agents, and representing blends of systems comprised of strategic- and non-strategic components.
 
 ### Intended Audience - required background knowledge
 
-This tutorial is directed towards _applied modellers_ who want to use the software for modelling of concrete situations. We do not give a detailed explanation how the engine works. If you are interested in that, please check out ...
+This tutorial is directed towards _applied modellers_ who want to use the software for modelling of concrete situations. We do not give a detailed explanation how the engine works internally. If you are interested in that, please check out XXX.
 
 Some knowledge of Haskell is helpful as we are implementing some auxiliary stuff (like utility functions) in Haskell. However, this is mostly about defining functions which should be not too hard to grasp even without knowledge of Haskell.
 

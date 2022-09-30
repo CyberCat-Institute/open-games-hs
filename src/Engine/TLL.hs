@@ -96,12 +96,12 @@ instance (Apply f x (acc -> acc), FoldrL f acc xs)
 
 -- Map to classical lists
 class MapListPayoff f xs where
-  mapListPayoff :: f -> List xs -> [Double]
+  mapListPayoff :: f -> List xs -> [[Double]]
 
 instance MapListPayoff f '[] where
   mapListPayoff _ _ = []
 
-instance (Apply f x Double, MapListPayoff f xs)
+instance (Apply f x [Double], MapListPayoff f xs)
   => MapListPayoff f(x ': xs) where
   mapListPayoff f (x ::- xs) = apply f x : mapListPayoff f xs
 

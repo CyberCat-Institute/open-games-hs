@@ -127,8 +127,9 @@ instance Apply Payoff [DiagnosticInfoBayesian x y] [Double] where
 
 data Identity = Identity
 
-instance Apply Identity [Double] [Double] where
-  apply _ x = fmap id x
+instance Apply Identity [[Double]] [Double] where
+  apply _ x = concat x
+
 
 ---------------------
 -- main functionality
@@ -151,13 +152,13 @@ generateIsEq hlist = putStrLn $
 
 -- give equilibrium value for further use
 generateEquilibrium :: forall xs.
-              ( MapL   Equilibrium xs     (ConstMap Bool xs)
+               ( MapL   Equilibrium xs     (ConstMap Bool xs)
                , FoldrL And Bool (ConstMap Bool xs)
                ) => List xs -> Bool
 generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equilibrium hlist
 
 generatePayoff :: forall xs.
-        ( MapL  Payoff xs     (ConstMap [Double] xs),
-         MapListPayoff Identity (ConstMap [Double] xs)
-         ) => List xs -> [Double]
-generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist
+         ( MapL  Payoff xs     (ConstMap [[Double]] xs)
+         , MapListPayoff Identity (ConstMap [[Double]] xs)
+         ) => List xs -> [[Double]]
+generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [[Double]] xs) Payoff hlist

@@ -157,6 +157,15 @@ generateEquilibrium :: forall xs.
                ) => List xs -> Bool
 generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equilibrium hlist
 
-generatePayoff :: forall x y. List '[[DiagnosticInfoBayesian x y]] -> [[Double]]
-generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [Double] '[DiagnosticInfoBayesian x y]) Payoff hlist
+generatePayoff
+  :: (MapListPayoff Identity (ConstMap [Double] xs),
+      MapL Payoff xs (ConstMap [Double] xs)) =>
+     List xs -> [[Double]]
+generatePayoff hlist = mapToDoubles $ mapListToDouble hlist
+ where mapListToDouble :: forall xs.
+            (MapL Payoff xs (ConstMap [Double] xs))
+            => List xs -> List (ConstMap [Double] xs)
+       mapListToDouble hlist =  mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist
+       mapToDoubles :: MapListPayoff Identity xs => List xs -> [[Double]]
+       mapToDoubles hlist = mapListPayoff Identity hlist
 

@@ -19,6 +19,7 @@ module Engine.TLL
   , Unappend(..)
   , MapL(..)
   , FoldrL(..)
+  , MapListPayoff(..)
   , ConstMap(..)
   , SequenceList(..)
   , Natural(..)
@@ -92,6 +93,18 @@ instance FoldrL f acc '[] where
 instance (Apply f x (acc -> acc), FoldrL f acc xs)
   => FoldrL f acc (x ': xs) where
   foldrL f acc (x ::- xs) = apply f x $ foldrL f acc xs
+
+-- Map to classical lists
+class MapListPayoff f xs where
+  mapListPayoff :: f -> List xs -> [Double]
+
+instance MapListPayoff f '[] where
+  mapListPayoff _ _ = []
+
+instance (Apply f x Double, MapListPayoff f xs)
+  => MapListPayoff f(x ': xs) where
+  mapListPayoff f (x ::- xs) = apply f x : mapListPayoff f xs
+
 
 type family ConstMap (t :: *) (xs :: [*]) :: [*] where
   ConstMap _      '[]  = '[]

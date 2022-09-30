@@ -71,6 +71,14 @@ toEquilibrium = equilibrium
 equilibriumMap :: [DiagnosticInfoBayesian x y] -> Bool
 equilibriumMap = and . fmap toEquilibrium
 
+-- map diagnostics to payoff
+toPayoff :: DiagnosticInfoBayesian x y -> Double
+toPayoff = payoff
+
+payoffMap :: [DiagnosticInfoBayesian x y] -> [Double]
+payoffMap = fmap toPayoff
+
+
 
 ----------------------------------------------------------
 -- providing the relevant functionality at the type level
@@ -110,6 +118,16 @@ data And = And
 instance Apply And Bool (Bool -> Bool) where
   apply _ x = \y -> y && x
 
+-- for apply output of equilibrium function
+data Payoff = Payoff
+
+instance Apply Payoff [DiagnosticInfoBayesian x y] [Double] where
+  apply _ x = payoffMap x
+
+data Identity = Identity
+
+instance Apply Identity [Double] [Double] where
+  apply _ x = fmap id x
 
 ---------------------
 -- main functionality
@@ -136,3 +154,9 @@ generateEquilibrium :: forall xs.
                , FoldrL And Bool (ConstMap Bool xs)
                ) => List xs -> Bool
 generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equilibrium hlist
+
+generatePayoff :: forall xs.
+        ( MapL  Payoff xs     (ConstMap [Double] xs),
+         MapListPayoff Identity (ConstMap [Double] xs)
+         ) => List xs -> [Double]
+generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist

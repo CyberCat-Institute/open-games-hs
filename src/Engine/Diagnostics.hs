@@ -15,6 +15,7 @@ module Engine.Diagnostics
   , generateOutput
   , generateIsEq
   , generateEquilibrium
+  , generatePayoff
   ) where
 
 import Engine.OpticClass

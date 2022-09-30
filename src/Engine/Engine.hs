@@ -25,6 +25,7 @@ module Engine.Engine
   , generateOutput
   , generateIsEq
   , generateEquilibrium
+  , generatePayoff
   , OpenGame(..)
   , lift
   , reindex

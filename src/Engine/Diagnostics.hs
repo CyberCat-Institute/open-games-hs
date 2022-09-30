@@ -16,6 +16,7 @@ module Engine.Diagnostics
   , generateIsEq
   , generateEquilibrium
   , generatePayoff
+  , nextState
   ) where
 
 import Engine.OpticClass
@@ -102,7 +103,6 @@ data PrintOutput = PrintOutput
 instance (Show y, Ord y, Show x) => Apply PrintOutput [DiagnosticInfoBayesian x y] String where
   apply _ x = showDiagnosticInfoL x
 
-
 data Concat = Concat
 
 instance Apply Concat String (String -> String) where
@@ -157,6 +157,7 @@ generateEquilibrium :: forall xs.
                ) => List xs -> Bool
 generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equilibrium hlist
 
+-- give achieved payoffs with current strategy
 generatePayoff
   :: (MapListPayoff Identity (ConstMap [Double] xs),
       MapL Payoff xs (ConstMap [Double] xs)) =>
@@ -168,4 +169,18 @@ generatePayoff hlist = mapToDoubles $ mapListToDouble hlist
        mapListToDouble hlist =  mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist
        mapToDoubles :: MapListPayoff Identity xs => List xs -> [[Double]]
        mapToDoubles hlist = mapListPayoff Identity hlist
+
+---------------------------------------
+-- Helper functionality for play output
+
+-- Transform the optic into the next state given some input
+nextState ::
+  StochasticStatefulOptic s t a b ->
+  s ->
+  Stochastic a
+nextState (StochasticStatefulOptic v _) x = do
+  (z, a) <- v x
+  pure a
+
+
 

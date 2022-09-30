@@ -157,31 +157,6 @@ generateEquilibrium :: forall xs.
                ) => List xs -> Bool
 generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equilibrium hlist
 
-generatePayoff :: forall xs.
-         ( MapL  Payoff xs     (ConstMap [[Double]] xs)
-         , MapListPayoff Identity (ConstMap [[Double]] xs)
-         ) => List xs -> [[Double]]
-generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [[Double]] xs) Payoff hlist
+generatePayoff :: forall x y. List '[[DiagnosticInfoBayesian x y]] -> [[Double]]
+generatePayoff hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [Double] '[DiagnosticInfoBayesian x y]) Payoff hlist
 
-
-splitMap :: forall xs.
-     (MapL Payoff xs (ConstMap [Double] xs))
-     => List xs -> List (ConstMap [Double] xs)
-splitMap hlist =  mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist
-
-
-splitMap2 :: List (ConstMap [Double] '[[DiagnosticInfoBayesian x y]]) -> [[Double]]
-splitMap2 hlist = mapListPayoff Identity hlist
---
-
-generatePayoff2 :: forall x y. List '[[DiagnosticInfoBayesian x y]] -> [[Double]]
-generatePayoff2 hlist = mapListPayoff Identity $ mapL @_ @_ @(ConstMap [Double] '[DiagnosticInfoBayesian x y]) Payoff hlist
-
-
-
-testPayoff1 = DiagnosticInfoBayesian True "test" 1.0 (certainly 1.0) 3.0 (const 2.0) 4.0 "hello" "nothing"
-testPayoff2 = DiagnosticInfoBayesian True "test" 5.0 (certainly 6.0) 7.0 (const 8.0) 9.0 "hello" "nothing"
-
-listTest = [testPayoff1,testPayoff2] ::- Nil
-
-listTest2 = splitMap listTest

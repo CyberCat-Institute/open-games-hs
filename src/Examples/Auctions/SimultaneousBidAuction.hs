@@ -193,6 +193,56 @@ bidding2 kPrice kSlots reservePrice valueSpace1 valueSpace2 actionSpace1 actionS
    |]
 
 
+ -- Instantiates a simplified version with two players and expose winning bid
+bidding2ExposeWinningBid name1 name2 kPrice kSlots reservePrice valueSpace1 valueSpace2 actionSpace1 actionSpace2  = [opengame|
+
+   inputs    :      ;
+   feedback  :      ;
+
+   :-----------------:
+   inputs    :      ;
+   feedback  :      ;
+   operation : natureDrawsTypeStage name1 valueSpace1 ;
+   outputs   :  aliceValue ;
+   returns   :      ;
+
+   inputs    :      ;
+   feedback  :      ;
+   operation : natureDrawsTypeStage name2 valueSpace2 ;
+   outputs   :  bobValue ;
+   returns   :      ;
+
+   inputs    :  aliceValue    ;
+   feedback  :      ;
+   operation :  biddingStage name1 actionSpace1 ;
+   outputs   :  aliceDec ;
+   returns   :  payments  ;
+
+   inputs    :  bobValue    ;
+   feedback  :      ;
+   operation :  biddingStage name2 actionSpace2 ;
+   outputs   :  bobDec ;
+   returns   :  payments  ;
+
+   inputs    :  [(name1,aliceDec),(name2,bobDec)]  ;
+   feedback  :      ;
+   operation :   transformPayments kPrice kSlots reservePrice ;
+   outputs   :  payments ;
+   returns   :      ;
+
+   inputs    :  payments  ;
+   feedback  :      ;
+   operation : forwardFunction $ extractWinningBid ;
+   outputs   :  price ;
+   returns   :      ;
+
+   :-----------------:
+
+   outputs   : price  ;
+   returns   :      ;
+   |]
+
+ 
 
   
 -- B Analysis

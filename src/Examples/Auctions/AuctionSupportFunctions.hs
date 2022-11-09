@@ -31,6 +31,9 @@ noLotteryPayment resPrice kmax noLottery counterWinner lotteriesGiven ((name,bid
    if winner
       then (name,kmax) : noLotteryPayment resPrice kmax noLottery counterWinner lotteriesGiven ls
       else (name,0) : noLotteryPayment resPrice kmax noLottery (counterWinner + 1) lotteriesGiven ls
+-- Determine realized price
+extractWinningBid :: (Num v, Ord v) => [(n, v)] -> v
+extractWinningBid ls = maximum $ fmap snd ls 
 
 -- k- price auction rule, i.e. the sequence for winning bidders is ignored, winners always pay k-highest price
 noLotteryPaymentReservePrice ::(Num v, Ord v) => v -> v -> Int -> Int -> Int -> [(n,v,Bool)] -> [(n, v)]

@@ -212,7 +212,7 @@ thresholdStrat' =
 ---------------
 -- 1 Equilibria
 -- 1.0 Eq. game with 3 players
-equilibriumGame kPrice kSlots noLotteries paymentFunction strat = evaluate (bidding kPrice kSlots noLotteries paymentFunction) strat void
+equilibriumGameSequentialAuction kPrice kSlots noLotteries paymentFunction strat = evaluate (bidding kPrice kSlots noLotteries paymentFunction) strat void
 
 
 ------------------------
@@ -220,24 +220,24 @@ equilibriumGame kPrice kSlots noLotteries paymentFunction strat = evaluate (bidd
 
 
 -- 3 players with 1 auction slot, 2nd highest price, and 1 lottery slot - truthful bidding - not an eq
--- generateIsEq $ equilibriumGame 2 1 1 lotteryPayment truthfulStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 lotteryPayment truthfulStrat
 
 -- 3 players with 1 auction slot, 2nd highest price, and 1 lottery slot with modified payment - truthful bidding - eq
--- generateIsEq $ equilibriumGame 2 1 1 lotteryPayment2 truthfulStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 lotteryPayment2 truthfulStrat
 
 -- 3 players with 1 auction slot, 2nd highest price is paid, and 1 lottery slot - threshold bidding - is an eq
--- generateIsEq $ equilibriumGame 2 1 1 lotteryPayment thresholdStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 lotteryPayment thresholdStrat
 
 -- 3 players with 1 auction slot and 1 lottery slot AND 2nd price rule - strategies before not an equilibrium
--- generateIsEq $ equilibriumGame 2 1 1 noLotteryPayment thresholdStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 noLotteryPayment thresholdStrat
 
 -- Truthful bidding is also not an equilibrium
--- generateIsEq $ equilibriumGame 2 1 1 noLotteryPayment truthfulStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 noLotteryPayment truthfulStrat
 
 -- But the alternative threshold strategy is an equilibrium
--- generateIsEq $ equilibriumGame 2 1 1 noLotteryPayment thresholdStrat'
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 1 noLotteryPayment thresholdStrat'
 
 -- Also note: Once we exclude slots via lottery, and just auction off one slot, truthful bidding becomes an equilibrium
--- generateIsEq $ equilibriumGame 2 1 0 noLotteryPayment truthfulStrat
+-- generateIsEq $ equilibriumGameSequentialAuction 2 1 0 noLotteryPayment truthfulStrat
 
 

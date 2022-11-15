@@ -23,6 +23,7 @@ library
       Engine.BayesianGames
       Engine.Diagnostics
       Engine.Engine
+      Engine.ExternalEnvironment
       Engine.OpenGames
       Engine.OpticClass
       Engine.TLL
@@ -52,7 +53,6 @@ library
   other-modules:
       Data.Utils
       Engine.BayesianGamesNonState
-      Engine.ExternalEnvironment
       Engine.IOGames
       Examples.Markov.NStageMarkov
       Examples.Staking.AndGateMarkov

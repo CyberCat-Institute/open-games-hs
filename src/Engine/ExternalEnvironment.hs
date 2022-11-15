@@ -12,9 +12,17 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module Engine.ExternalEnvironment where
+module Engine.ExternalEnvironment
+  ( ExternalEnvironmentGame
+  , fromFunctions
+  , fromLens
+  , interactWithEnv
+  , liftStochastic
+  , nature )
+  
+  where
 
-import           Engine.Engine hiding (fromLens, fromFunctions, nature, liftStochastic)
+import           Engine.Engine hiding (fromLens, fromFunctions, nature)
 
 ---------------------------------------------------------------------
 -- This module implements a plain pure input version of an open game.

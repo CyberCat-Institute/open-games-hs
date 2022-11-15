@@ -233,12 +233,12 @@ bidding2ExposeWinningBid name1 name2 kPrice kSlots reservePrice valueSpace1 valu
    inputs    :  payments  ;
    feedback  :      ;
    operation : forwardFunction $ extractWinningBid ;
-   outputs   :  price ;
+   outputs   : (winner,price) ;
    returns   :      ;
 
    :-----------------:
 
-   outputs   : price  ;
+   outputs   : (winner,price)  ;
    returns   :      ;
    |]
 

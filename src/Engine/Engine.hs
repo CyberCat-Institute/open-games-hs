@@ -22,6 +22,7 @@ module Engine.Engine
   , playDeterministically
   , discount
   , addPayoffs
+  , addRolePayoffs
   , DiagnosticInfoBayesian(..)
   , generateOutput
   , generateIsEq

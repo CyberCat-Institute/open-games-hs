@@ -24,6 +24,7 @@ module Engine.BayesianGames
   , playDeterministically
   , discount
   , addPayoffs
+  , addRolePayoffs
   ) where
 
 
@@ -93,6 +94,7 @@ dependentDecision name ys = OpenGame {
               | (theta, x) <- support h]) ::- Nil }
 
 -- Main decision operator with role dependency; so that player's roles can be part of the input
+-- TODO needs testing
 dependentRoleDecision :: (Eq x, Show x, Ord y, Show y) => ((String,x) -> [y]) -> StochasticStatefulBayesianOpenGame '[Kleisli Stochastic x y] '[[DiagnosticInfoBayesian x y]] (String,x) () y Payoff
 dependentRoleDecision ys = OpenGame {
   play = \(a ::- Nil) -> let v (name,x) = do {y <- runKleisli a x; return (name, y)}
@@ -176,6 +178,15 @@ addPayoffs name = OpenGame {
                    u value () = modify (adjustOrAdd (\x -> x + value) value name)
                  in StochasticStatefulOptic v u,
   evaluate = \_ _ -> Nil}
+
+-- add payoffs with roles being fed from the outside
+addRolePayoffs :: StochasticStatefulBayesianOpenGame '[] '[] (Agent,Payoff) () () ()
+addRolePayoffs = OpenGame {
+  play = \_ -> let v x = return (x, ())
+                   u (name,value) () = modify (adjustOrAdd (\x -> x + value) value name)
+                 in StochasticStatefulOptic v u,
+  evaluate = \_ _ -> Nil}
+
 
 
 --------------------------------------------------------------------------------------

@@ -30,8 +30,6 @@ import           Engine.Engine hiding (fromLens, fromFunctions, nature)
 -- This module implements a plain pure input version of an open game.
 -- The idea is that the input comes from the outside world.
 -- The open games just ties together the information/action flow.
--- Use case is the connection to Ensemble as a game structure for
--- experiments.
 ---------------------------------------------------------------------
 
 -------------

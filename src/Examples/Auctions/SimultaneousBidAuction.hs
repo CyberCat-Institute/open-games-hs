@@ -9,7 +9,9 @@
 module Examples.Auctions.SimultaneousBidAuction
   ( bidding2ReservePrice
   , bidding2
-  , bidding2ExposeWinningBid)
+  , bidding2ExposeWinningBid
+  , truthfulStrat
+  , values)
   where
 
 

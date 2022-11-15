@@ -12,6 +12,7 @@ module Engine.Engine
   , Agent(..)
   , Payoff(..)
   , dependentDecision
+  , dependentRoleDecision
   , dependentEpsilonDecision
   , fromFunctions
   , fromLens

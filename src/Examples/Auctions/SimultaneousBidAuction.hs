@@ -6,7 +6,11 @@
 {-# LANGUAGE QuasiQuotes #-}
 
 
-module Examples.Auctions.SimultaneousBidAuction where
+module Examples.Auctions.SimultaneousBidAuction
+  ( bidding2ReservePrice
+  , bidding2
+  , bidding2ExposeWinningBid)
+  where
 
 
 import Engine.Engine

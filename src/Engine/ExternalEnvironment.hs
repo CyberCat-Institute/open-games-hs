@@ -14,6 +14,8 @@
 
 module Engine.ExternalEnvironment
   ( ExternalEnvironmentGame
+  , extractNextState
+  , extractPayoffAndNextState
   , fromFunctions
   , fromLens
   , interactWithEnv

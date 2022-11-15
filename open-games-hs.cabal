@@ -52,6 +52,7 @@ library
   other-modules:
       Data.Utils
       Engine.BayesianGamesNonState
+      Engine.ExternalEnvironment
       Engine.IOGames
       Examples.Markov.NStageMarkov
       Examples.Staking.AndGateMarkov

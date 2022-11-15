@@ -17,6 +17,7 @@ library:
     - Engine.BayesianGames
     - Engine.Diagnostics
     - Engine.Engine
+    - Engine.ExternalEnvironment
     - Engine.OpenGames
     - Engine.OpticClass
     - Engine.TLL

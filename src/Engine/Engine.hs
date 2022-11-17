@@ -25,7 +25,9 @@ module Engine.Engine
   , addRolePayoffs
   , DiagnosticInfoBayesian(..)
   , generateOutput
+  , generateOutputString
   , generateIsEq
+  , generateIsEqString
   , generateEquilibrium
   , generatePayoff
   , nextState

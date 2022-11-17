@@ -15,6 +15,7 @@ module Engine.Diagnostics
   , generateOutput
   , generateOutputString
   , generateIsEq
+  , generateIsEqString
   , generateEquilibrium
   , generatePayoff
   , nextState
@@ -160,6 +161,16 @@ generateIsEq :: forall xs.
                ) => List xs -> IO ()
 generateIsEq hlist = putStrLn $
   "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintIsEq hlist) ++ "----Analytics end----\n"
+
+-- print string output equilibrium relevant information
+generateIsEqString :: forall xs.
+               ( MapL   PrintIsEq xs     (ConstMap String xs)
+               , FoldrL Concat String (ConstMap String xs)
+               ) => List xs -> String
+generateIsEqString hlist =
+  "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintIsEq hlist) ++ "----Analytics end----\n"
+
+
 
 -- give equilibrium value for further use
 generateEquilibrium :: forall xs.

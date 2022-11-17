@@ -13,6 +13,7 @@
 module Engine.Diagnostics
   ( DiagnosticInfoBayesian(..)
   , generateOutput
+  , generateOutputString
   , generateIsEq
   , generateEquilibrium
   , generatePayoff
@@ -134,7 +135,7 @@ instance Apply Identity [Double] [Double] where
 ---------------------
 -- main functionality
 
--- all information for all players
+-- print all information for all players
 generateOutput :: forall xs.
                ( MapL   PrintOutput xs     (ConstMap String xs)
                , FoldrL Concat String (ConstMap String xs)
@@ -142,7 +143,17 @@ generateOutput :: forall xs.
 generateOutput hlist = putStrLn $
   "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintOutput hlist) ++ "----Analytics end----\n"
 
--- output equilibrium relevant information
+-- generate string of output information for all information for all players
+generateOutputString :: forall xs.
+               ( MapL   PrintOutput xs     (ConstMap String xs)
+               , FoldrL Concat String (ConstMap String xs)
+               ) => List xs -> String
+generateOutputString hlist =
+  "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintOutput hlist) ++ "----Analytics end----\n"
+
+
+
+-- print output equilibrium relevant information
 generateIsEq :: forall xs.
                ( MapL   PrintIsEq xs     (ConstMap String xs)
                , FoldrL Concat String (ConstMap String xs)

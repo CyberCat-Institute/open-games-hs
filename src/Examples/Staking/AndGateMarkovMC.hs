@@ -9,11 +9,11 @@
 module Examples.Staking.AndGateMarkovMC where
 
 import           Debug.Trace
-import           Engine.Engine hiding (fromLens,Agent,fromFunctions,discount,nature)
-import           Engine.IOGames
-import           Preprocessor.Preprocessor
+import           OpenGames.Engine.Engine hiding (fromLens,Agent,fromFunctions,discount,nature)
+import           OpenGames.Engine.IOGames
+import           OpenGames.Preprocessor
 
-import           Control.Monad.State  hiding (state,void)
+import           Control.Monad.State  hiding (lift, state,void)
 import qualified Control.Monad.State  as ST
 import qualified Data.Vector as V
 import           Numeric.Probability.Distribution hiding (map, lift, filter)

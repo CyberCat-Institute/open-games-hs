@@ -7,7 +7,7 @@
 module Examples.Markov.RepeatedPDNonState where 
 
 
-import           Engine.Engine hiding (StochasticStatefulOptic
+import           OpenGames.Engine.Engine hiding (StochasticStatefulOptic
                                       , StochasticStatefulBayesianOpenGame(..)
                                       , Agent(..)
                                       , dependentDecision
@@ -20,8 +20,8 @@ import           Engine.Engine hiding (StochasticStatefulOptic
                                       , playDeterministically
                                       , discount
                                       )
-import           Engine.BayesianGamesNonState
-import           Preprocessor.Preprocessor
+import           OpenGames.Engine.BayesianGamesNonState
+import           OpenGames.Preprocessor
 
 
 import Numeric.Probability.Distribution hiding (map, lift, filter)

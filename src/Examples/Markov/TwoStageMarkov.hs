@@ -7,11 +7,11 @@
 module Examples.Markov.TwoStageMarkov where 
 
 import           Data.Tuple.Extra (uncurry3)
-import           Engine.Engine
-import           Preprocessor.Preprocessor
+import           OpenGames.Engine.Engine
+import           OpenGames.Preprocessor
 import           Examples.SimultaneousMoves (ActionPD(..), Location(..))
 
-import           Control.Monad.State  hiding (state,void)
+import           Control.Monad.State  hiding (lift, state,void)
 import qualified Control.Monad.State  as ST
 
 import Numeric.Probability.Distribution hiding (map, lift, filter)

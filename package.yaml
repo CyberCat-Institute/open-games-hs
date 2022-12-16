@@ -9,26 +9,23 @@ license: AGPL
 extra-source-files:
 - README.md
 
-
 library:
   source-dirs: src
   exposed-modules:
-    - Engine.AtomicGames
-    - Engine.BayesianGames
-    - Engine.Diagnostics
-    - Engine.Engine
-    - Engine.ExternalEnvironment
-    - Engine.OpenGames
-    - Engine.OpticClass
-    - Engine.TLL
-    - Preprocessor.AbstractSyntax
-    - Preprocessor.Compile
-    - Preprocessor.Lambda
-    - Preprocessor.Parser
-    - Preprocessor.THSyntax
-    - Preprocessor.TH
-    - Preprocessor.Types
-    - Preprocessor.Preprocessor
+    - OpenGames.Engine.AtomicGames
+    - OpenGames.Engine.BayesianGames
+    - OpenGames.Engine.Diagnostics
+    - OpenGames.Engine.Engine
+    - OpenGames.Engine.OpenGames
+    - OpenGames.Engine.OpticClass
+    - OpenGames.Engine.TLL
+    - OpenGames.Preprocessor
+    - OpenGames.Preprocessor.BlockSyntax
+    - OpenGames.Preprocessor.Codegen
+    - OpenGames.Preprocessor.CompileBlock
+    - OpenGames.Preprocessor.CompileSyntax
+    - OpenGames.Preprocessor.Parser
+    - OpenGames.Preprocessor.RuntimeAST
     - Examples.SimultaneousMoves
     - Examples.Bayesian
     - Examples.Decision
@@ -43,7 +40,6 @@ library:
     - Examples.Markov.TwoStageMarkov
     - Examples.Markov.TestSimpleMonteCarlo
     - Examples.Markov.TestSimpleMonteCarlo.Continuation
-    - Graphics
 
 dependencies:
     - base >=4.7 && <5
@@ -82,11 +78,3 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - open-games-hs
-  graphics:
-    main:                Main.hs
-    source-dirs:         graphics
-    dependencies:
-      - open-games-hs
-      - graphviz
-      - template-haskell
-      - criterion

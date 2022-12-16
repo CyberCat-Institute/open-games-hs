@@ -12,7 +12,7 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module Engine.ExternalEnvironment
+module OpenGames.Engine.ExternalEnvironment
   ( ExternalEnvironmentGame
   , extractNextState
   , extractPayoffAndNextState
@@ -24,7 +24,7 @@ module Engine.ExternalEnvironment
   
   where
 
-import           Engine.Engine hiding (fromLens, fromFunctions, nature)
+import           OpenGames.Engine.Engine hiding (fromLens, fromFunctions, nature)
 
 ---------------------------------------------------------------------
 -- This module implements a plain pure input version of an open game.

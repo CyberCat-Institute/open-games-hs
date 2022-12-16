@@ -12,12 +12,12 @@
 module Examples.Auctions.DutchAuction where 
 
 
-import Engine.Engine
-import Preprocessor.Preprocessor
+import OpenGames.Engine.Engine
+import OpenGames.Preprocessor
 import Examples.Auctions.AuctionSupportFunctions
 
 
-import           Control.Monad.State  hiding (state,void)
+import           Control.Monad.State  hiding (lift, state,void)
 import qualified Control.Monad.State  as ST
 
 -- Create super-game including a tick-repeated version

@@ -11,8 +11,8 @@ module Examples.Decision
 
 import GHC.Generics
 
-import Engine.Engine
-import Preprocessor.Preprocessor
+import OpenGames.Engine.Engine
+import OpenGames.Preprocessor
 
 ---------------------------------------------
 -- 0. A single decision w/o prior information

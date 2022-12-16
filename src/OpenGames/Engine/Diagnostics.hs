@@ -10,7 +10,7 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 
-module Engine.Diagnostics
+module OpenGames.Engine.Diagnostics
   ( DiagnosticInfoBayesian(..)
   , generateOutput
   , generateOutputString
@@ -21,8 +21,8 @@ module Engine.Diagnostics
   , nextState
   ) where
 
-import Engine.OpticClass
-import Engine.TLL
+import OpenGames.Engine.OpticClass
+import OpenGames.Engine.TLL
 
 import Numeric.Probability.Distribution hiding (map, lift, filter) -- FIXME get rid once tested payoff
 --------------------------------------------------------

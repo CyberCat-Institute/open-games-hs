@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -19,22 +19,20 @@ extra-source-files:
 
 library
   exposed-modules:
-      Engine.AtomicGames
-      Engine.BayesianGames
-      Engine.Diagnostics
-      Engine.Engine
-      Engine.ExternalEnvironment
-      Engine.OpenGames
-      Engine.OpticClass
-      Engine.TLL
-      Preprocessor.AbstractSyntax
-      Preprocessor.Compile
-      Preprocessor.Lambda
-      Preprocessor.Parser
-      Preprocessor.THSyntax
-      Preprocessor.TH
-      Preprocessor.Types
-      Preprocessor.Preprocessor
+      OpenGames.Engine.AtomicGames
+      OpenGames.Engine.BayesianGames
+      OpenGames.Engine.Diagnostics
+      OpenGames.Engine.Engine
+      OpenGames.Engine.OpenGames
+      OpenGames.Engine.OpticClass
+      OpenGames.Engine.TLL
+      OpenGames.Preprocessor
+      OpenGames.Preprocessor.BlockSyntax
+      OpenGames.Preprocessor.Codegen
+      OpenGames.Preprocessor.CompileBlock
+      OpenGames.Preprocessor.CompileSyntax
+      OpenGames.Preprocessor.Parser
+      OpenGames.Preprocessor.RuntimeAST
       Examples.SimultaneousMoves
       Examples.Bayesian
       Examples.Decision
@@ -49,14 +47,14 @@ library
       Examples.Markov.TwoStageMarkov
       Examples.Markov.TestSimpleMonteCarlo
       Examples.Markov.TestSimpleMonteCarlo.Continuation
-      Graphics
   other-modules:
       Data.Utils
-      Engine.BayesianGamesNonState
-      Engine.IOGames
       Examples.Markov.NStageMarkov
       Examples.Staking.AndGateMarkov
       Examples.Staking.AndGateMarkovMC
+      OpenGames.Engine.BayesianGamesNonState
+      OpenGames.Engine.ExternalEnvironment
+      OpenGames.Engine.IOGames
       Paths_open_games_hs
   hs-source-dirs:
       src
@@ -75,39 +73,6 @@ library
     , lens
     , mtl
     , mwc-random
-    , parsec
-    , poly
-    , probability
-    , profunctors
-    , random
-    , template-haskell
-    , transformers
-    , typed-process
-    , vector
-  default-language: Haskell2010
-
-executable graphics
-  main-is: Main.hs
-  other-modules:
-      Paths_open_games_hs
-  hs-source-dirs:
-      graphics
-  build-depends:
-      QuickCheck
-    , ad
-    , base >=4.7 && <5
-    , comonad
-    , criterion
-    , extra
-    , fgl
-    , graphviz
-    , hashable
-    , hashmap
-    , haskeline
-    , lens
-    , mtl
-    , mwc-random
-    , open-games-hs
     , parsec
     , poly
     , probability

@@ -6,6 +6,9 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE AllowAmbiguousTypes #-}
 
 module OpenGames.Engine.BayesianGames
   ( StochasticStatefulBayesianOpenGame(..)
@@ -25,10 +28,11 @@ module OpenGames.Engine.BayesianGames
   , discount
   , addPayoffs
   , addRolePayoffs
+  , (+++)
   ) where
 
 
-import           Control.Arrow                      hiding ((+:+))
+import           Control.Arrow                      hiding ((+:+), (+++))
 import           Control.Monad.State                hiding (state)
 import           Control.Monad.Trans.Class
 import GHC.TypeLits
@@ -41,6 +45,7 @@ import Data.List (maximumBy)
 import Data.Ord (comparing)
 import           Data.Utils
 import Numeric.Probability.Distribution hiding (map, lift, filter)
+import Unsafe.Coerce
 
 import OpenGames.Engine.OpenGames hiding (lift)
 import OpenGames.Engine.OpticClass
@@ -125,6 +130,36 @@ dependentEpsilonDecision epsilon name ys = OpenGame {
                    strategy = runKleisli a x
                   in deviationsInContext epsilon name x theta strategy u (ys x)
               | (theta, x) <- support h]) ::- Nil }
+
+
+-- Branching operator
+(+++) :: forall a1 a2 b1 b2 x1 x2 s r y1 y2. (Unappend a1, Unappend a2, RepNothing b1, RepNothing b2)
+      => StochasticStatefulBayesianOpenGame a1 b1 x1 s y1 r
+      -> StochasticStatefulBayesianOpenGame a2 b2 x2 s y2 r
+      -> StochasticStatefulBayesianOpenGame (a1 +:+ a2) (TMap Maybe (b1 +:+ b2)) (Either x1 x2) s (Either y1 y2) r
+(+++) g1 g2 = OpenGame {
+  play = \as -> case unappend as of (a1, a2) -> play g1 a1 ++++ play g2 a2,
+  evaluate = \as (StochasticStatefulContext h k) ->
+    case unappend as of
+      ((a1, a2) :: (List a1, List a2)) ->
+          let xs1 = [((z, x1), p) | ((z, Left x1), p) <- decons h]
+              xs2 = [((z, x2), p) | ((z, Right x2), p) <- decons h]
+              e1 = evaluate g1 a1 (StochasticStatefulContext (fromFreqs xs1) (\z y1 -> k z (Left y1)))
+              e2 = evaluate g2 a2 (StochasticStatefulContext (fromFreqs xs2) (\z y2 -> k z (Right y2)))
+              -- Warning: evil laziness trick
+              -- "fromFreqs xs" throws an exception when xs is null
+              -- It is possible for either xs1 or xs2 to be null, but not both
+              -- (because a probability distribution on a disjoint union must
+              -- be supported on at least one component)
+           in case (null xs1, null xs2) of
+                (False, False) -> vmap Just (e1 +:+ e2)
+                (False, True)  -> unsafeConcat @b1 @b2 (vmap Just e1) (rep @b2)
+                (True, False)  -> unsafeConcat @b1 @b2 (rep @b1) (vmap Just e2)
+                _              -> error "This can't happen"
+}
+
+unsafeConcat :: forall b1 b2. List (TMap Maybe b1) -> List (TMap Maybe b2) -> List (TMap Maybe (b1 +:+ b2))
+unsafeConcat = unsafeCoerce (+:+)
 
 
 

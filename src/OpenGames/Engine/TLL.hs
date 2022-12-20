@@ -5,11 +5,13 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE GADTs                 #-}
-
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE AllowAmbiguousTypes #-}
 
 -- Parts of this file were written by Sjoerd Visscher
 
@@ -17,7 +19,10 @@ module OpenGames.Engine.TLL
   ( List(..)
   , Apply(..)
   , Unappend(..)
+  , RepNothing(..)
   , MapL(..)
+  , TMap(..)
+  , vmap
   , FoldrL(..)
   , MapListPayoff(..)
   , ConstMap(..)
@@ -63,6 +68,15 @@ instance Unappend '[] where
 instance Unappend as => Unappend (a ': as) where
   unappend (a ::- abs) = case unappend abs of (as, bs) -> (a ::- as, bs)
 
+class RepNothing (as :: [*]) where
+  rep :: List (TMap Maybe as)
+
+instance RepNothing '[] where
+  rep = Nil
+
+instance RepNothing xs => RepNothing (x ': xs) where
+  rep = Nothing ::- rep @xs
+
 ---------------------------------
 -- Operations to transform output
 -- Preliminary apply class
@@ -78,6 +92,15 @@ class MapL f xs ys where
 instance MapL f '[] '[] where
   mapL _ _ = Nil
 
+type family TMap (f :: * -> *) (ls :: [*]) :: [*] where
+  TMap f '[] = '[]
+  TMap f (x ': xs) = f x : TMap f xs
+
+vmap :: -- forall (f :: * -> *) (xs :: [*]) .
+  (forall ty. ty -> f ty) ->
+  List xs -> List (TMap f xs)
+vmap f Nil = Nil
+vmap f (x ::- xs) = f x ::- vmap f xs
 
 instance (Apply f x y, MapL f xs ys)
   => MapL f (x ': xs) (y ': ys) where

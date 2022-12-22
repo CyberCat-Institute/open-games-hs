@@ -27,6 +27,7 @@ module OpenGames.Engine.Engine
   , generateOutput
   , generateOutputString
   , generateIsEq
+  , generateIsEqMaybe
   , generateIsEqString
   , generateEquilibrium
   , generatePayoff

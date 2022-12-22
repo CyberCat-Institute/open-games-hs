@@ -15,6 +15,7 @@ module OpenGames.Engine.Diagnostics
   , generateOutput
   , generateOutputString
   , generateIsEq
+  , generateIsEqMaybe
   , generateIsEqString
   , generateEquilibrium
   , generatePayoff
@@ -68,6 +69,15 @@ checkEqL ls = let xs = fmap equilibrium ls
                   in if isEq == True then "\n Strategies are in equilibrium"
                                       else "\n Strategies are NOT in equilibrium. Consider the following profitable deviations: \n"  ++ showDiagnosticInfoL ys
 
+-- checks equilibrium for the branching case
+-- checks equilibrium and if not outputs relevant deviations
+checkEqMaybeL :: (Show y, Ord y, Show x) => Maybe [DiagnosticInfoBayesian x y] -> String
+checkEqMaybeL ls =
+  case ls of
+    Just ls' -> checkEqL ls'
+    Nothing  -> "\n NOTHING CASE"
+    
+
 -- map diagnostics to equilibrium
 toEquilibrium :: DiagnosticInfoBayesian x y -> Bool
 toEquilibrium = equilibrium
@@ -99,6 +109,11 @@ data PrintIsEq = PrintIsEq
 instance (Show y, Ord y, Show x) => Apply PrintIsEq [DiagnosticInfoBayesian x y] String where
   apply _ x = checkEqL x
 
+-- for the branching operator
+data PrintIsEqMaybe = PrintIsEqMaybe
+
+instance (Show y, Ord y, Show x) => Apply PrintIsEq (Maybe [DiagnosticInfoBayesian x y]) String where
+  apply _ x = checkEqMaybeL x
 
 data PrintOutput = PrintOutput
 
@@ -162,6 +177,14 @@ generateIsEq :: forall xs.
 generateIsEq hlist = putStrLn $
   "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintIsEq hlist) ++ "----Analytics end----\n"
 
+-- print output equilibrium relevant information
+generateIsEqMaybe :: forall xs.
+               ( MapL   PrintIsEqMaybe xs     (ConstMap String xs)
+               , FoldrL Concat String (ConstMap String xs)
+               ) => List xs -> IO ()
+generateIsEqMaybe hlist = putStrLn $
+  "----Analytics begin----" ++ (foldrL Concat "" $ mapL @_ @_ @(ConstMap String xs) PrintIsEqMaybe hlist) ++ "----Analytics end----\n"
+ 
 -- print string output equilibrium relevant information
 generateIsEqString :: forall xs.
                ( MapL   PrintIsEq xs     (ConstMap String xs)

@@ -36,6 +36,7 @@ module OpenGames.Engine.Engine
   , reindex
   , (>>>)
   , (&&&)
+  , (+++)
   , Stochastic(..)
   , Vector(..)
   , StochasticStatefulOptic(..)

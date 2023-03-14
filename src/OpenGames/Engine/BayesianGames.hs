@@ -20,6 +20,7 @@ module OpenGames.Engine.BayesianGames
   , fromLens
   , fromFunctions
   , nature
+  , natureEndInput
   , liftStochastic
   , uniformDist
   , distFromList
@@ -177,6 +178,12 @@ nature :: Stochastic x -> StochasticStatefulBayesianOpenGame '[] '[] () () x ()
 nature a = OpenGame {
   play = \Nil -> StochasticStatefulOptic (\() -> do {x <- a; return ((), x)}) (\() () -> return ()),
   evaluate = \Nil _ -> Nil}
+
+natureEndInput :: StochasticStatefulBayesianOpenGame '[] '[] (Stochastic x) () x ()
+natureEndInput = OpenGame {
+  play = \Nil -> StochasticStatefulOptic (\x -> do {x' <- x; return ((), x')}) (\() () -> return ()),
+  evaluate = \Nil _ -> Nil}
+
 
 liftStochastic :: (x -> Stochastic y) -> StochasticStatefulBayesianOpenGame '[] '[] x () y ()
 liftStochastic f = OpenGame {

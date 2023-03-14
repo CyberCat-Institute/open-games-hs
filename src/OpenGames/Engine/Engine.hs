@@ -6,6 +6,7 @@ module OpenGames.Engine.Engine
   , forwardFunction
   , backwardFunction
   , nature
+  , natureEndInput
   , natureDraw
   , liftStochasticForward
   , StochasticStatefulBayesianOpenGame(..)

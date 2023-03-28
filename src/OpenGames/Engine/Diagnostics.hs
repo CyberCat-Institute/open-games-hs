@@ -25,7 +25,8 @@ module OpenGames.Engine.Diagnostics
 import OpenGames.Engine.OpticClass
 import OpenGames.Engine.TLL
 
-import Numeric.Probability.Distribution hiding (map, lift, filter) -- FIXME get rid once tested payoff
+import qualified Control.Monad.State  as ST
+
 --------------------------------------------------------
 -- Diagnosticinformation and processesing of information
 -- for standard game-theoretic analysis
@@ -226,6 +227,15 @@ nextState ::
 nextState (StochasticStatefulOptic v _) x = do
   (z, a) <- v x
   pure a
+
+extractContinuation
+  :: StochasticStatefulOptic s t a ()
+     -> s
+     -> ST.StateT Vector Stochastic t
+extractContinuation (StochasticStatefulOptic v u) x = do
+  (z,a) <- ST.lift (v x)
+  u z ()
+
 
 
 

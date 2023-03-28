@@ -115,9 +115,6 @@ dependentRoleDecision ys = OpenGame {
                   in deviationsInContext 0 name x theta strategy u (ys (name,x))
               | (theta, (name,x)) <- support h]) ::- Nil }
 
-
-
-
 dependentEpsilonDecision :: (Eq x, Show x, Ord y, Show y) => Double -> String -> (x -> [y])  -> StochasticStatefulBayesianOpenGame '[Kleisli Stochastic x y] '[[DiagnosticInfoBayesian x y]] x () y Payoff
 dependentEpsilonDecision epsilon name ys = OpenGame {
   play = \(a ::- Nil) -> let v x = do {y <- runKleisli a x; return ((), y)}

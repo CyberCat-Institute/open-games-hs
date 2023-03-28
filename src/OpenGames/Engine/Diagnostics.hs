@@ -20,6 +20,7 @@ module OpenGames.Engine.Diagnostics
   , generateEquilibrium
   , generatePayoff
   , nextState
+  , extractContinuation
   ) where
 
 import OpenGames.Engine.OpticClass

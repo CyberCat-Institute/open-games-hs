@@ -33,6 +33,7 @@ module OpenGames.Engine.Engine
   , generateEquilibrium
   , generatePayoff
   , nextState
+  , extractContinuation 
   , OpenGame(..)
   , lift
   , reindex

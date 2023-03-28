@@ -20,7 +20,7 @@ module OpenGames.Engine.Diagnostics
   , generateEquilibrium
   , generatePayoff
   , nextState
-  , extractContinuation
+  , nextContinuation
   ) where
 
 import OpenGames.Engine.OpticClass
@@ -229,11 +229,11 @@ nextState (StochasticStatefulOptic v _) x = do
   (z, a) <- v x
   pure a
 
-extractContinuation
+nextContinuation
   :: StochasticStatefulOptic s t a ()
      -> s
      -> ST.StateT Vector Stochastic t
-extractContinuation (StochasticStatefulOptic v u) x = do
+nextContinuation (StochasticStatefulOptic v u) x = do
   (z,a) <- ST.lift (v x)
   u z ()
 

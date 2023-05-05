@@ -85,9 +85,9 @@ backwardFunction function = [opengame|
 
     :-----:
     inputs    :   ;
-    feedback  :   ;
+    feedback  : s;
     operation : fromFunctions id function ;
-    outputs   : s ;
+    outputs   :  ;
     returns   : r ;
     :-----:
 

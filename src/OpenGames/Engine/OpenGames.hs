@@ -19,6 +19,8 @@ data OpenGame o c a b x s y r = OpenGame {
   evaluate :: List a -> c x s y r -> List b
 }
 
+-- Test comment
+
 lift :: o x s y r -> OpenGame o c '[] '[] x s y r
 lift o = OpenGame {
   play = \Nil -> o,

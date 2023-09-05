@@ -13,12 +13,8 @@
 
         myDevTools = [
           hPkgs.ghc # GHC compiler in the desired version (will be available on PATH)
-          hPkgs.ghcid # Continuous terminal Haskell compile checker
-          hPkgs.hlint # Haskell codestyle checker
-          hPkgs.hoogle # Lookup Haskell documentation
           hPkgs.haskell-language-server # LSP server for editor
           hPkgs.implicit-hie # auto generate LSP hie.yaml file from cabal
-          hPkgs.retrie # Haskell refactoring tool
           stack-wrapped
           pkgs.zlib # External C library needed by some Haskell packages
         ];

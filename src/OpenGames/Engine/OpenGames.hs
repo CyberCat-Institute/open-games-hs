@@ -19,7 +19,7 @@ data OpenGame o c a b x s y r = OpenGame {
   evaluate :: List a -> c x s y r -> List b
 }
 
--- Test comment
+-- Test comment 2
 
 lift :: o x s y r -> OpenGame o c '[] '[] x s y r
 lift o = OpenGame {

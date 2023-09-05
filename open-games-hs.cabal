@@ -9,9 +9,9 @@ version:        0.1.0.0
 synopsis:       Haskell implementation of open games
 category:       Math
 author:         Jules Hedges, André Videla, Philipp Zahn & other contributors
-maintainer:     philipp.zahn@protonmail
+maintainer:     philipp.m.zahn@gmail.com
 copyright:      Jules Hedges, André Videla, Philipp Zahn & other contributors
-license:        AGPL
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
@@ -33,28 +33,8 @@ library
       OpenGames.Preprocessor.CompileSyntax
       OpenGames.Preprocessor.Parser
       OpenGames.Preprocessor.RuntimeAST
-      Examples.SimultaneousMoves
-      Examples.Bayesian
-      Examples.Decision
-      Examples.SequentialMoves
-      Examples.Auctions.AuctionSupportFunctions
-      Examples.Auctions.ChooseReservePrice
-      Examples.Auctions.DutchAuction
-      Examples.Auctions.SequentialAuction
-      Examples.Auctions.SimultaneousBidAuction
-      Examples.Markov.RepeatedPD
-      Examples.Markov.RepeatedPDNonState
-      Examples.Markov.TwoStageMarkov
-      Examples.Markov.TestSimpleMonteCarlo
-      Examples.Markov.TestSimpleMonteCarlo.Continuation
   other-modules:
       Data.Utils
-      Examples.Markov.NStageMarkov
-      Examples.Staking.AndGateMarkov
-      Examples.Staking.AndGateMarkovMC
-      OpenGames.Engine.BayesianGamesNonState
-      OpenGames.Engine.ExternalEnvironment
-      OpenGames.Engine.IOGames
       Paths_open_games_hs
   hs-source-dirs:
       src

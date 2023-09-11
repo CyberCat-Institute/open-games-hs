@@ -16,7 +16,6 @@
           hPkgs.haskell-language-server # LSP server for editor
           hPkgs.implicit-hie # auto generate LSP hie.yaml file from cabal
           stack-wrapped
-          pkgs.zlib # External C library needed by some Haskell packages
         ];
 
         stack-wrapped = pkgs.symlinkJoin {
@@ -26,7 +25,6 @@
           postBuild = ''
             wrapProgram $out/bin/stack \
               --add-flags "\
-                --no-nix \
                 --system-ghc \
                 --no-install-ghc \
               "
@@ -35,18 +33,6 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = myDevTools;
-
-          # Make external Nix c libraries like zlib known to GHC, like
-          # pkgs.haskell.lib.buildStackProject does
-          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath myDevTools;
-
-          shellHook = ''
-            if test -f "REPO_UNINITIALIZED.sh"; then
-              chmod +x REPO_UNINITIALIZED.sh
-              ./REPO_UNINITIALIZED.sh
-              rm REPO_UNINITIALIZED.sh
-            fi
-          '';
         };
       });
 }

@@ -1,0 +1,53 @@
+name: open-games-hs
+version: '0.1.0.0'
+synopsis: Haskell implementation of open games
+category: Math
+author: Jules Hedges, André Videla, Philipp Zahn & other contributors
+maintainer: philipp.m.zahn@gmail.com
+copyright: Jules Hedges, André Videla, Philipp Zahn & other contributors
+license: MIT
+extra-source-files:
+- README.md
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - OpenGames.Engine.AtomicGames
+
+dependencies:
+    - base >=4.7 && <5
+    - mtl
+    - transformers
+    - probability
+    - ad
+    - poly
+    - profunctors
+    - template-haskell
+    - parsec
+    - QuickCheck
+    - comonad
+    - haskeline
+    - hashmap
+    - hashable
+    - extra
+    - fgl
+    - graphviz
+    - lens
+    - typed-process
+    - mwc-random
+    - random
+    - vector
+    - criterion
+
+
+
+executables:
+  open-games-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - open-games-hs

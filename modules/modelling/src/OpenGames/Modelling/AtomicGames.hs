@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module OpenGames.Engine.AtomicGames
+module OpenGames.Modelling.AtomicGames
  ( decision
  , decisionNoObs
  , forwardFunction

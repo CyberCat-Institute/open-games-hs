@@ -1,14 +1,8 @@
 {-# LANGUAGE ExplicitNamespaces #-}
 
 module OpenGames.Engine.Engine
-  ( decision
-  , decisionNoObs
-  , forwardFunction
-  , backwardFunction
-  , nature
+  ( nature
   , natureEndInput
-  , natureDraw
-  , liftStochasticForward
   , StochasticStatefulBayesianOpenGame(..)
   , Agent(..)
   , Payoff(..)
@@ -64,7 +58,6 @@ module OpenGames.Engine.Engine
   ) where
 
 -- | File organizes the imports of the engine to streamline the import of relevant functionality
-import OpenGames.Engine.AtomicGames
 import OpenGames.Engine.BayesianGames hiding (liftStochastic)
 import OpenGames.Engine.OpenGames
 import OpenGames.Engine.OpticClass

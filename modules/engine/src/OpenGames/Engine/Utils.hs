@@ -1,4 +1,4 @@
-module Data.Utils where
+module OpenGames.Engine.Utils where
 
 import Prelude hiding (map)
 import Data.HashMap

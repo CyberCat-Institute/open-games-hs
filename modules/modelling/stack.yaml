@@ -1,0 +1,10 @@
+resolver: lts-20.20
+
+packages:
+- .
+
+ghc-options:
+  "$locals": -fwarn-incomplete-patterns
+
+nix:
+  enable: true

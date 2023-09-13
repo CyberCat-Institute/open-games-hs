@@ -6,5 +6,8 @@ packages:
 ghc-options:
   "$locals": -fwarn-incomplete-patterns
 
+extra-deps:
+  - ../engine
+
 nix:
   enable: true

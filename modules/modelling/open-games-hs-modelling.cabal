@@ -1,0 +1,31 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           open-games-hs-modelling
+version:        0.1.0.0
+synopsis:       Haskell implementation of open games
+category:       Math
+author:         Jules Hedges, André Videla, Philipp Zahn & other contributors
+maintainer:     philipp.m.zahn@gmail.com
+copyright:      Jules Hedges, André Videla, Philipp Zahn & other contributors
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+library
+  exposed-modules:
+      OpenGames.Modelling.AtomicGames
+  other-modules:
+      Paths_open_games_hs_modelling
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , open-games-hs-engine
+    , open-games-hs-preprocessor
+    , template-haskell
+  default-language: Haskell2010

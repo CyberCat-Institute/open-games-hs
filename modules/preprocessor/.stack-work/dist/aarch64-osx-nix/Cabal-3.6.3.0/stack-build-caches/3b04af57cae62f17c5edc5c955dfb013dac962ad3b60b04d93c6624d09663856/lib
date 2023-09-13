@@ -1,0 +1,26 @@
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/Paths_open_games_hs_preprocessor.hs
+: hash: 5b815bd0ec2c1d4cda7dad0a79f3b7c9daded52e5fa0f31e3794ce345a6b18f3
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/cabal_macros.h
+: hash: 9f3d052af641d06e324d39748d90fac7e149ef0064b7536082d2ff84ca20d76d
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/README.md:
+  hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/open-games-hs-preprocessor.cabal:
+  hash: b5d670593068693d427d8db546eae5d60aee07cc677b344b8162fbd78cc89dce
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/package.yaml:
+  hash: 2d5a213c3dc0052464f0cce2c8d9831a25d994b9ffd95ec4e685902b17891557
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor.hs:
+  hash: 40e9159b673859a5f9227c0da2b0c36217b9763e3cc9c14aea7a1b0278c54bbf
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/BlockSyntax.hs:
+  hash: eb3637e76f32e80a2bc194e260f89f420cdead8970b639db928d287faf18b647
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/Codegen.hs:
+  hash: cf5be4b9ca6a324922b3a17a66121f5ced921387e57f69c74d4b79aadf6f2d71
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/CompileBlock.hs:
+  hash: 073c632de08282457e881cd1e2f5a7173128f0163a9152516f5382cf749207de
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/CompileSyntax.hs:
+  hash: ad65ac0701132c38d3a5a199902e05b8a3851b4b2cbbc398fbb0f0da738054ff
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/Parser.hs:
+  hash: 536fd740ce4e911a7efbbfed3f51da59507ed44323ec3740406e2e07bbabe67b
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/preprocessor/src/OpenGames/Preprocessor/RuntimeAST.hs:
+  hash: 701db83779b3c0224436a117235e75f13726a5c3db0346a48f5bbeec33528358
+/nix/store/5p7hkw0i6sdihc2cp9rfb32c80h1y0kj-ghc-9.2.7/lib/ghc-9.2.7/include/ghcversion.h:
+  hash: d590b76d2d5f98f01894882dc106d920a101f52edb6a09b9a7f8dc701b075565

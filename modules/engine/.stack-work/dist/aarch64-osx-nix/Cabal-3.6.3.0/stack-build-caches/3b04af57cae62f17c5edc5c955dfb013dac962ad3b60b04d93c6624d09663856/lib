@@ -1,0 +1,26 @@
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/Paths_open_games_hs_engine.hs
+: hash: f90bcf6146699aad0ed1f3350357a4c51536e13223c8ee80a8df9b0fca2eed6b
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/cabal_macros.h
+: hash: 161d75d1e2f339d1cd2ee3ae69f5f9736b8297c3d40d1f44ad135cfbfcb84de1
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/README.md:
+  hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/open-games-hs-engine.cabal:
+  hash: 3789b304b1bb4a0c85f65935cae2fa22a78cc29b36fb24129e693d4c7e647e20
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/package.yaml:
+  hash: 2366ad19ee298f0ea167b7cb3b78c65d41a9b47ca043b49d49c07f6f2cf9b92d
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/BayesianGames.hs:
+  hash: a8136f1acd71c3340f155119173401adb694b3b9fd16396f9715754e82b3df14
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/Diagnostics.hs:
+  hash: 6ea21ce39d376d00c29c87c7e3b249990db7c89140bc8dd4439ab7be68708263
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/Engine.hs:
+  hash: c99301f4dca51415d2709b32771db9643ba5381df556e581d3f6a82ce411b44c
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/OpenGames.hs:
+  hash: 812ee4de398fa090907f1a3f3e7b5bcc649481230788b85501fa38f06b0f991a
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/OpticClass.hs:
+  hash: 96635728e46ca20ed0110be20bbbc7732d71c9952e8949cd4f602b8cf538ebb7
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/TLL.hs:
+  hash: 8f9b021a51e6c920f889d3f27bfdffbf41e98d62547b16144d16b0c5dac1747d
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/engine/src/OpenGames/Engine/Utils.hs:
+  hash: 5c8853edae427d82818c3faa4e47725f7212f7aec3d43809036bf41ab09c7018
+/nix/store/5p7hkw0i6sdihc2cp9rfb32c80h1y0kj-ghc-9.2.7/lib/ghc-9.2.7/include/ghcversion.h:
+  hash: d590b76d2d5f98f01894882dc106d920a101f52edb6a09b9a7f8dc701b075565

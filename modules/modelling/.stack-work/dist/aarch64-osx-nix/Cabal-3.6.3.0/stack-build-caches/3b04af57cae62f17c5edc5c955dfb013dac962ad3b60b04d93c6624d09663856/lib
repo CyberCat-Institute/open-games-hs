@@ -1,0 +1,14 @@
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/Paths_open_games_hs_modelling.hs
+: hash: d4188a773cb3433be524e79091c090427cbe7e913bb72a6de5fb2f62754fb179
+? /Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/.stack-work/dist/aarch64-osx-nix/Cabal-3.6.3.0/build/autogen/cabal_macros.h
+: hash: 9b29c08e5e66af4007024311d6de83e31f082d803daa50345769650aaaa91728
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/README.md:
+  hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/open-games-hs-modelling.cabal:
+  hash: 2693b402874f5b6e10f6112cea58454429295b393b5195d47d7cd1dc3f62a515
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/package.yaml:
+  hash: 46799ee78813c27ad923fb7047bd6e2fb4f0f66310db92edf9428da9ac6ca47b
+/Users/dpl0a/Documents/work/cybercat/open-games-hs/modules/modelling/src/OpenGames/Modelling/AtomicGames.hs:
+  hash: a0b84daf60eb21f5ea02e844493a6d9b9ff3a7cc348ac2566eea0cfcae76576d
+/nix/store/5p7hkw0i6sdihc2cp9rfb32c80h1y0kj-ghc-9.2.7/lib/ghc-9.2.7/include/ghcversion.h:
+  hash: d590b76d2d5f98f01894882dc106d920a101f52edb6a09b9a7f8dc701b075565

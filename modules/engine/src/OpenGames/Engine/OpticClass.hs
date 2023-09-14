@@ -22,8 +22,6 @@ import           Data.HashMap                       as HM hiding (null,map,mapMa
 import           Data.Maybe
 import qualified Data.Vector as V
 import           Numeric.Probability.Distribution   hiding (lift)
-import           System.Random.MWC.CondensedTable
-import           System.Random.Stateful
 
 
 class Optic o where

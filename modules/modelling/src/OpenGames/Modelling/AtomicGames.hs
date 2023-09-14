@@ -1,4 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE QuasiQuotes #-}
 
@@ -10,8 +9,6 @@ module OpenGames.Modelling.AtomicGames
  , natureDraw
  , liftStochasticForward
  ) where
-
-import Language.Haskell.TH
 
 import OpenGames.Engine.BayesianGames
 import OpenGames.Engine.OpenGames

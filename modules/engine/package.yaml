@@ -1,6 +1,6 @@
 name: open-games-hs-engine
 version: '0.1.0.0'
-synopsis: Haskell implementation of open games
+synopsis: Haskell implementation of the open games engine
 category: Math
 author: Jules Hedges, André Videla, Philipp Zahn & other contributors
 maintainer: philipp.m.zahn@gmail.com
@@ -24,22 +24,7 @@ dependencies:
     - mtl
     - transformers
     - probability
-    - ad
-    - poly
-    - profunctors
-    - template-haskell
-    - parsec
-    - QuickCheck
     - comonad
-    - haskeline
     - hashmap
     - hashable
-    - extra
-    - fgl
-    - graphviz
-    - lens
-    - typed-process
-    - mwc-random
-    - random
     - vector
-    - criterion

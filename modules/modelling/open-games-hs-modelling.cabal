@@ -6,7 +6,7 @@ cabal-version: 1.12
 
 name:           open-games-hs-modelling
 version:        0.1.0.0
-synopsis:       Haskell implementation of open games
+synopsis:       User-facing library for the open-games-hs engine
 category:       Math
 author:         Jules Hedges, André Videla, Philipp Zahn & other contributors
 maintainer:     philipp.m.zahn@gmail.com
@@ -27,5 +27,4 @@ library
       base >=4.7 && <5
     , open-games-hs-engine
     , open-games-hs-preprocessor
-    , template-haskell
   default-language: Haskell2010

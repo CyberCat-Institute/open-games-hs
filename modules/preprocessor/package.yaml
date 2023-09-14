@@ -1,6 +1,6 @@
 name: open-games-hs-preprocessor
 version: '0.1.0.0'
-synopsis: Haskell implementation of open games
+synopsis: EDSL preprocessor for the open-games-hs engine
 category: Math
 author: Jules Hedges, André Videla, Philipp Zahn & other contributors
 maintainer: philipp.m.zahn@gmail.com
@@ -22,26 +22,7 @@ library:
 
 dependencies:
     - base >=4.7 && <5
-    - mtl
-    - transformers
-    - probability
-    - ad
-    - poly
-    - profunctors
     - template-haskell
     - parsec
-    - QuickCheck
     - comonad
-    - haskeline
-    - hashmap
-    - hashable
-    - extra
-    - fgl
-    - graphviz
-    - lens
-    - typed-process
-    - mwc-random
-    - random
-    - vector
-    - criterion
     - open-games-hs-engine

@@ -12,7 +12,7 @@ module OpenGames.Modelling.AtomicGames
 
 import OpenGames.Engine.BayesianGames
 import OpenGames.Engine.OpenGames
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics
 import OpenGames.Preprocessor
 
 ---------------------------------------

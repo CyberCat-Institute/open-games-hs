@@ -11,7 +11,7 @@ module OpenGames.Engine.OpenGames
  ) where
 
 
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics
 import OpenGames.Engine.TLL
 
 data OpenGame o c a b x s y r = OpenGame {

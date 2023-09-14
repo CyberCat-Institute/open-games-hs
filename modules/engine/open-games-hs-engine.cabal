@@ -22,7 +22,8 @@ library
       OpenGames.Engine.Diagnostics
       OpenGames.Engine.Engine
       OpenGames.Engine.OpenGames
-      OpenGames.Engine.OpticClass
+      OpenGames.Engine.Optics
+      OpenGames.Engine.Optics.StochasticStateful
       OpenGames.Engine.TLL
   other-modules:
       OpenGames.Engine.Utils

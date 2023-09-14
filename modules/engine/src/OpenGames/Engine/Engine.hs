@@ -60,7 +60,8 @@ module OpenGames.Engine.Engine
 -- | File organizes the imports of the engine to streamline the import of relevant functionality
 import OpenGames.Engine.BayesianGames hiding (liftStochastic)
 import OpenGames.Engine.OpenGames
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics
+import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.Diagnostics
 import OpenGames.Engine.TLL
 

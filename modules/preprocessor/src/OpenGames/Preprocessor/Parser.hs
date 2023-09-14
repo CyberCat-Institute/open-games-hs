@@ -20,9 +20,6 @@ module OpenGames.Preprocessor.Parser
 
 import           Data.Char
 import           Text.Parsec hiding (Line)
-import           Text.Parsec.Prim
-import           Text.Parsec.Error
-import           Text.Parsec.Language (emptyDef)
 import           Text.Parsec.String   (Parser)
 import qualified Text.Parsec.Expr     as Ex
 import qualified Text.Parsec.Token    as Tok

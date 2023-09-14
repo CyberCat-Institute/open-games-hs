@@ -19,7 +19,6 @@ module OpenGames.Engine.OpticClass
 
 import           Control.Monad.State                hiding (state)
 import           Data.HashMap                       as HM hiding (null,map,mapMaybe)
-import           Data.Maybe
 import qualified Data.Vector as V
 import           Numeric.Probability.Distribution   hiding (lift)
 

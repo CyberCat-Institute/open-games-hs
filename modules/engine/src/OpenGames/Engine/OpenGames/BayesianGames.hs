@@ -10,7 +10,7 @@
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module OpenGames.Engine.BayesianGames
+module OpenGames.Engine.OpenGames.BayesianGames
   ( StochasticStatefulBayesianOpenGame(..)
   , Agent(..)
   , Payoff(..)
@@ -54,9 +54,9 @@ import OpenGames.Engine.TLL
 import OpenGames.Engine.Diagnostics
 import OpenGames.Engine.Utils
 
----------------------------------------------
-
--- Reimplements stateful bayesian from before
+{-
+Stateful bayesian games
+-}
 
 type StochasticStatefulBayesianOpenGame a b x s y r = OpenGame StochasticStatefulOptic StochasticStatefulContext a b x s y r
 

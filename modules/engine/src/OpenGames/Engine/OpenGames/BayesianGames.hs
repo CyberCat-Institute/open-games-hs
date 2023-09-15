@@ -13,8 +13,6 @@
 module OpenGames.Engine.OpenGames.BayesianGames
   ( DiagnosticInfoBayesian(..)
   , StochasticStatefulBayesianOpenGame(..)
-  , Agent(..)
-  , Payoff(..)
   , dependentDecision
   , dependentRoleDecision
   , dependentEpsilonDecision
@@ -53,6 +51,7 @@ import OpenGames.Engine.Optics
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
 import OpenGames.Engine.OpenGames.Utils
+import OpenGames.Engine.OpenGames.Types
 
 {-
 Stateful bayesian games
@@ -70,14 +69,7 @@ data DiagnosticInfoBayesian x y = DiagnosticInfoBayesian
   , state           :: x
   , unobservedState :: String}
 
-
-
-
 type StochasticStatefulBayesianOpenGame a b x s y r = OpenGame StochasticStatefulOptic StochasticStatefulContext a b x s y r
-
-type Agent = String
-
-type Payoff = Double
 
 support :: Stochastic x -> [x]
 support = map fst . decons

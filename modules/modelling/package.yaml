@@ -12,9 +12,11 @@ extra-source-files:
 library:
   source-dirs: src
   exposed-modules:
-    - OpenGames.Modelling.AtomicGames
+    - OpenGames.BayesianModelling.AtomicGames
+    - OpenGames.BayesianModelling.Diagnostics
 
 dependencies:
     - base >=4.7 && <5
+    - mtl 
     - open-games-hs-engine
     - open-games-hs-preprocessor

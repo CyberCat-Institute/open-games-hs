@@ -12,8 +12,9 @@ extra-source-files:
 library:
   source-dirs: src
   exposed-modules:
-    - OpenGames.Engine.OpenGames.BayesianGames
     - OpenGames.Engine.OpenGames
+    - OpenGames.Engine.OpenGames.BayesianGames
+    - OpenGames.Engine.OpenGames.Types
     - OpenGames.Engine.Optics
     - OpenGames.Engine.Optics.StochasticStateful
     - OpenGames.Engine.TLL

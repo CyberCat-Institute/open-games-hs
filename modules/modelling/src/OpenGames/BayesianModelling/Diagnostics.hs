@@ -10,9 +10,8 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 
-module OpenGames.Modelling.Diagnostics
-  ( DiagnosticInfoBayesian(..)
-  , generateOutput
+module OpenGames.BayesianModelling.Diagnostics
+  ( generateOutput
   , generateOutputString
   , generateIsEq
   , generateIsEqMaybe
@@ -25,8 +24,8 @@ module OpenGames.Modelling.Diagnostics
 
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
-import OpenGames.Modelling.Printer
-import OpenGames.Modelling.Types
+import OpenGames.BayesianModelling.Diagnostics.Printer
+import OpenGames.BayesianModelling.Diagnostics.TLLTypes
 
 import qualified Control.Monad.State  as ST
 
@@ -87,13 +86,13 @@ generateEquilibrium hlist = foldrL And True $ mapL @_ @_ @(ConstMap Bool xs) Equ
 -- give achieved payoffs with current strategy
 generatePayoff
   :: (MapListPayoff Identity (ConstMap [Double] xs),
-      MapL Payoff xs (ConstMap [Double] xs)) =>
+      MapL Payoffs xs (ConstMap [Double] xs)) =>
      List xs -> [[Double]]
 generatePayoff hlist = mapToDoubles $ mapListToDouble hlist
  where mapListToDouble :: forall xs.
-            (MapL Payoff xs (ConstMap [Double] xs))
+            (MapL Payoffs xs (ConstMap [Double] xs))
             => List xs -> List (ConstMap [Double] xs)
-       mapListToDouble hlist =  mapL @_ @_ @(ConstMap [Double] xs) Payoff hlist
+       mapListToDouble hlist =  mapL @_ @_ @(ConstMap [Double] xs) Payoffs hlist
        mapToDoubles :: MapListPayoff Identity xs => List xs -> [[Double]]
        mapToDoubles hlist = mapListPayoff Identity hlist
 

@@ -10,18 +10,23 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 
-module OpenGames.Modelling.Diagnostics.Types
-  ( ShowDiagnosticOutput
-  , PrintIsEq
-  , PrintIsEqMaybe
-  , PrintOutput
-  , Concat
-  , Equilibrium
-  , And
-  , Payoff
-  , Identity
+module OpenGames.BayesianModelling.Diagnostics.TLLTypes
+  ( ShowDiagnosticOutput(..)
+  , PrintIsEq(..)
+  , PrintIsEqMaybe(..)
+  , PrintOutput(..)
+  , Concat(..)
+  , Equilibrium(..)
+  , And(..)
+  , Payoffs(..)
+  , Identity(..)
   ) where
 
+
+import OpenGames.Engine.OpenGames.BayesianGames 
+import OpenGames.Engine.Optics.StochasticStateful 
+import OpenGames.Engine.TLL
+import OpenGames.BayesianModelling.Diagnostics.Printer
 
 {-
 Types for the Diagnostics of Bayesian games, including TLL constructions
@@ -69,9 +74,9 @@ instance Apply And Bool (Bool -> Bool) where
   apply _ x = \y -> y && x
 
 -- for apply output of equilibrium function
-data Payoff = Payoff
+data Payoffs = Payoffs
 
-instance Apply Payoff [DiagnosticInfoBayesian x y] [Double] where
+instance Apply Payoffs [DiagnosticInfoBayesian x y] [Double] where
   apply _ x = payoffMap x
 
 data Identity = Identity

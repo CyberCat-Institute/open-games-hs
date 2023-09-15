@@ -10,7 +10,7 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 
-module OpenGames.Modelling.Diagnostics.Printer
+module OpenGames.BayesianModelling.Diagnostics.Printer
   ( showDiagnosticInfo
   , showDiagnosticInfoL
   , checkEqL
@@ -21,7 +21,7 @@ module OpenGames.Modelling.Diagnostics.Printer
   , payoffMap
   ) where
 
-import OpenGames.Modelling.Diagnostics.Types
+import OpenGames.Engine.OpenGames.BayesianGames
 
 {-
 Provides output printing facilities as well as 

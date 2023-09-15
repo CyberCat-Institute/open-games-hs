@@ -10,10 +10,9 @@
 {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module OpenGames.Engine.BayesianGames
-  ( StochasticStatefulBayesianOpenGame(..)
-  , Agent(..)
-  , Payoff(..)
+module OpenGames.Engine.OpenGames.BayesianGames
+  ( DiagnosticInfoBayesian(..)
+  , StochasticStatefulBayesianOpenGame(..)
   , dependentDecision
   , dependentRoleDecision
   , dependentEpsilonDecision
@@ -51,18 +50,26 @@ import OpenGames.Engine.OpenGames hiding (lift)
 import OpenGames.Engine.Optics
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
-import OpenGames.Engine.Diagnostics
-import OpenGames.Engine.Utils
+import OpenGames.Engine.OpenGames.Utils
+import OpenGames.Engine.OpenGames.Types
 
----------------------------------------------
+{-
+Stateful bayesian games
+-}
 
--- Reimplements stateful bayesian from before
+-- Defining the necessary types for outputting information of a BayesianGame
+data DiagnosticInfoBayesian x y = DiagnosticInfoBayesian
+  { equilibrium     :: Bool
+  , player          :: String
+  , optimalMove     :: y
+  , strategy        :: Stochastic y
+  , optimalPayoff   :: Double
+  , context         :: (y -> Double)
+  , payoff          :: Double
+  , state           :: x
+  , unobservedState :: String}
 
 type StochasticStatefulBayesianOpenGame a b x s y r = OpenGame StochasticStatefulOptic StochasticStatefulContext a b x s y r
-
-type Agent = String
-
-type Payoff = Double
 
 support :: Stochastic x -> [x]
 support = map fst . decons
@@ -230,15 +237,3 @@ addRolePayoffs = OpenGame {
 
 
 
---------------------------------------------------------------------------------------
--- Implement a version which samples the play using the Prob library build in sampling
--- Ignore the evaluate part
-
-dependentDecisionIO :: (Eq x, Show x, Ord y, Show y) => String -> (x -> [y]) -> StochasticStatefulBayesianOpenGame '[Kleisli Stochastic x y] '[[DiagnosticInfoBayesian x y]] x () y Double
-dependentDecisionIO name _ = OpenGame {
-  play = \(a ::- Nil) -> let v x = do
-                               y <- runKleisli a x
-                               return ((), y)
-                             u () r = modify (adjustOrAdd (+ r) r name)
-                            in StochasticStatefulOptic v u,
-  evaluate = undefined }

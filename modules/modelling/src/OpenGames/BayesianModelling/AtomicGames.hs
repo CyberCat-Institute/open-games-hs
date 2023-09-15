@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module OpenGames.Modelling.AtomicGames
+module OpenGames.BayesianModelling.AtomicGames
  ( decision
  , decisionNoObs
  , forwardFunction
@@ -10,7 +10,7 @@ module OpenGames.Modelling.AtomicGames
  , liftStochasticForward
  ) where
 
-import OpenGames.Engine.BayesianGames
+import OpenGames.Engine.OpenGames.BayesianGames
 import OpenGames.Engine.OpenGames
 import OpenGames.Engine.Optics
 import OpenGames.Preprocessor

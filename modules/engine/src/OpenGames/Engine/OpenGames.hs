@@ -10,6 +10,10 @@ module OpenGames.Engine.OpenGames
  , (&&&)
  ) where
 
+{-
+Definition open game
+-}
+
 
 import OpenGames.Engine.Optics
 import OpenGames.Engine.TLL
@@ -18,8 +22,6 @@ data OpenGame o c a b x s y r = OpenGame {
   play :: List a -> o x s y r,
   evaluate :: List a -> c x s y r -> List b
 }
-
--- Test comment 3
 
 lift :: o x s y r -> OpenGame o c '[] '[] x s y r
 lift o = OpenGame {

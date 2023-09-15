@@ -4,49 +4,39 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 
-name:           open-games-hs
+name:           open-games-hs-engine
 version:        0.1.0.0
-synopsis:       Haskell implementation of open games
+synopsis:       Haskell implementation of the open games engine
 category:       Math
 author:         Jules Hedges, André Videla, Philipp Zahn & other contributors
 maintainer:     philipp.m.zahn@gmail.com
 copyright:      Jules Hedges, André Videla, Philipp Zahn & other contributors
 license:        MIT
-license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
 
-executable open-games-exe
-  main-is: Main.hs
+library
+  exposed-modules:
+      OpenGames.Engine.BayesianGames
+      OpenGames.Engine.Diagnostics
+      OpenGames.Engine.Engine
+      OpenGames.Engine.OpenGames
+      OpenGames.Engine.Optics
+      OpenGames.Engine.Optics.StochasticStateful
+      OpenGames.Engine.TLL
   other-modules:
-      Paths_open_games_hs
+      OpenGames.Engine.Utils
+      Paths_open_games_hs_engine
   hs-source-dirs:
-      ./app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+      src
   build-depends:
-      QuickCheck
-    , ad
-    , base >=4.7 && <5
+      base >=4.7 && <5
     , comonad
-    , criterion
-    , extra
-    , fgl
-    , graphviz
     , hashable
     , hashmap
-    , haskeline
-    , lens
     , mtl
-    , mwc-random
-    , open-games-hs
-    , parsec
-    , poly
     , probability
-    , profunctors
-    , random
-    , template-haskell
     , transformers
-    , typed-process
     , vector
   default-language: Haskell2010

@@ -1,0 +1,31 @@
+name: open-games-hs-engine
+version: '0.1.0.0'
+synopsis: Haskell implementation of the open games engine
+category: Math
+author: Jules Hedges, André Videla, Philipp Zahn & other contributors
+maintainer: philipp.m.zahn@gmail.com
+copyright: Jules Hedges, André Videla, Philipp Zahn & other contributors
+license: MIT
+extra-source-files:
+- README.md
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - OpenGames.Engine.BayesianGames
+    - OpenGames.Engine.Diagnostics
+    - OpenGames.Engine.Engine
+    - OpenGames.Engine.OpenGames
+    - OpenGames.Engine.Optics
+    - OpenGames.Engine.Optics.StochasticStateful
+    - OpenGames.Engine.TLL
+
+dependencies:
+    - base >=4.7 && <5
+    - mtl
+    - transformers
+    - probability
+    - comonad
+    - hashmap
+    - hashable
+    - vector

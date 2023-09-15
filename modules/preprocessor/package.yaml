@@ -1,0 +1,28 @@
+name: open-games-hs-preprocessor
+version: '0.1.0.0'
+synopsis: EDSL preprocessor for the open-games-hs engine
+category: Math
+author: Jules Hedges, André Videla, Philipp Zahn & other contributors
+maintainer: philipp.m.zahn@gmail.com
+copyright: Jules Hedges, André Videla, Philipp Zahn & other contributors
+license: MIT
+extra-source-files:
+- README.md
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - OpenGames.Preprocessor
+    - OpenGames.Preprocessor.BlockSyntax
+    - OpenGames.Preprocessor.Codegen
+    - OpenGames.Preprocessor.CompileBlock
+    - OpenGames.Preprocessor.CompileSyntax
+    - OpenGames.Preprocessor.Parser
+    - OpenGames.Preprocessor.RuntimeAST
+
+dependencies:
+    - base >=4.7 && <5
+    - template-haskell
+    - parsec
+    - comonad
+    - open-games-hs-engine

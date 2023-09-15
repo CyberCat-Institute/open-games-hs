@@ -1,0 +1,20 @@
+name: open-games-hs-modelling
+version: '0.1.0.0'
+synopsis: User-facing library for the open-games-hs engine
+category: Math
+author: Jules Hedges, André Videla, Philipp Zahn & other contributors
+maintainer: philipp.m.zahn@gmail.com
+copyright: Jules Hedges, André Videla, Philipp Zahn & other contributors
+license: MIT
+extra-source-files:
+- README.md
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - OpenGames.Modelling.AtomicGames
+
+dependencies:
+    - base >=4.7 && <5
+    - open-games-hs-engine
+    - open-games-hs-preprocessor

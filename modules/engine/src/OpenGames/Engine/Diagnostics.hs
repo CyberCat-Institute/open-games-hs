@@ -23,7 +23,7 @@ module OpenGames.Engine.Diagnostics
   , nextContinuation
   ) where
 
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
 
 import qualified Control.Monad.State  as ST

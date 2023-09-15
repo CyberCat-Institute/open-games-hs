@@ -33,27 +33,29 @@ module OpenGames.Engine.BayesianGames
   ) where
 
 
-import           Control.Arrow                      hiding ((+:+), (+++))
-import           Control.Monad.State                hiding (state)
-import           Control.Monad.Trans.Class
-import GHC.TypeLits
+import Control.Arrow                      hiding ((+:+), (+++))
+import Control.Monad.State                hiding (state)
+import Control.Monad.Trans.Class
 
 import Data.Foldable
-import           Data.HashMap                       as HM hiding (null,map,mapMaybe)
+import Data.HashMap                       as HM hiding (null,map,mapMaybe)
+import Data.Hashable
 
 
 import Data.List (maximumBy)
 import Data.Ord (comparing)
-import           Data.Utils
 import Numeric.Probability.Distribution hiding (map, lift, filter)
 import Unsafe.Coerce
 
 import OpenGames.Engine.OpenGames hiding (lift)
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics
+import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
 import OpenGames.Engine.Diagnostics
+import OpenGames.Engine.Utils
 
 ---------------------------------------------
+
 -- Reimplements stateful bayesian from before
 
 type StochasticStatefulBayesianOpenGame a b x s y r = OpenGame StochasticStatefulOptic StochasticStatefulContext a b x s y r

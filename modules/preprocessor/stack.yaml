@@ -1,12 +1,13 @@
 resolver: lts-20.20
 
 packages:
-- modules/engine
-- modules/modelling
-- modules/preprocessor
+- .
 
 ghc-options:
   "$locals": -fwarn-incomplete-patterns
+
+extra-deps:
+  - ../engine
 
 nix:
   enable: true

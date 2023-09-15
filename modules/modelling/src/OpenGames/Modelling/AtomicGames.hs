@@ -1,8 +1,7 @@
-{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module OpenGames.Engine.AtomicGames
+module OpenGames.Modelling.AtomicGames
  ( decision
  , decisionNoObs
  , forwardFunction
@@ -11,11 +10,9 @@ module OpenGames.Engine.AtomicGames
  , liftStochasticForward
  ) where
 
-import Language.Haskell.TH
-
 import OpenGames.Engine.BayesianGames
 import OpenGames.Engine.OpenGames
-import OpenGames.Engine.OpticClass
+import OpenGames.Engine.Optics
 import OpenGames.Preprocessor
 
 ---------------------------------------

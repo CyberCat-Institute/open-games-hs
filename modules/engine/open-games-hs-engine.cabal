@@ -18,15 +18,13 @@ extra-source-files:
 
 library
   exposed-modules:
-      OpenGames.Engine.BayesianGames
-      OpenGames.Engine.Diagnostics
-      OpenGames.Engine.Engine
+      OpenGames.Engine.OpenGames.BayesianGames
       OpenGames.Engine.OpenGames
       OpenGames.Engine.Optics
       OpenGames.Engine.Optics.StochasticStateful
       OpenGames.Engine.TLL
   other-modules:
-      OpenGames.Engine.Utils
+      OpenGames.Engine.OpenGames.Utils
       Paths_open_games_hs_engine
   hs-source-dirs:
       src

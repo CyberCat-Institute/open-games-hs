@@ -10,7 +10,7 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 
-module OpenGames.Engine.Diagnostics
+module OpenGames.Modelling.Diagnostics
   ( DiagnosticInfoBayesian(..)
   , generateOutput
   , generateOutputString
@@ -25,130 +25,10 @@ module OpenGames.Engine.Diagnostics
 
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
+import OpenGames.Modelling.Printer
+import OpenGames.Modelling.Types
 
 import qualified Control.Monad.State  as ST
-
---------------------------------------------------------
--- Diagnosticinformation and processesing of information
--- for standard game-theoretic analysis
-
--- Defining the necessary types for outputting information of a BayesianGame
-data DiagnosticInfoBayesian x y = DiagnosticInfoBayesian
-  { equilibrium     :: Bool
-  , player          :: String
-  , optimalMove     :: y
-  , strategy        :: Stochastic y
-  , optimalPayoff   :: Double
-  , context         :: (y -> Double)
-  , payoff          :: Double
-  , state           :: x
-  , unobservedState :: String}
-
-
--- prepare string information for Bayesian game
-showDiagnosticInfo :: (Show y, Ord y, Show x) => DiagnosticInfoBayesian x y -> String
-showDiagnosticInfo info =  
-     "\n"    ++ "Player: " ++ player info
-     ++ "\n" ++ "Optimal Move: " ++ (show $ optimalMove info)
-     ++ "\n" ++ "Current Strategy: " ++ (show $ strategy info)
-     ++ "\n" ++ "Optimal Payoff: " ++ (show $ optimalPayoff info)
-     ++ "\n" ++ "Current Payoff: " ++ (show $ payoff info)
-     ++ "\n" ++ "Observable State: " ++ (show $ state info)
-     ++ "\n" ++ "Unobservable State: " ++ (show $ unobservedState info)
-
-
-
--- output string information for a subgame expressions containing information from several players - bayesian 
-showDiagnosticInfoL :: (Show y, Ord y, Show x) => [DiagnosticInfoBayesian x y] -> String
-showDiagnosticInfoL [] = "\n --No more information--"
-showDiagnosticInfoL (x:xs)  = showDiagnosticInfo x ++ "\n --other game-- " ++ showDiagnosticInfoL xs 
-
--- checks equilibrium and if not outputs relevant deviations
-checkEqL :: (Show y, Ord y, Show x) => [DiagnosticInfoBayesian x y] -> String
-checkEqL ls = let xs = fmap equilibrium ls
-                  ys = filter (\x -> equilibrium x == False) ls
-                  isEq = and xs
-                  in if isEq == True then "\n Strategies are in equilibrium"
-                                      else "\n Strategies are NOT in equilibrium. Consider the following profitable deviations: \n"  ++ showDiagnosticInfoL ys
-
--- checks equilibrium for the branching case
--- checks equilibrium and if not outputs relevant deviations
-checkEqMaybeL :: (Show y, Ord y, Show x) => Maybe [DiagnosticInfoBayesian x y] -> String
-checkEqMaybeL ls =
-  case ls of
-    Just ls' -> checkEqL ls'
-    Nothing  -> "\n NOTHING CASE"
-    
-
--- map diagnostics to equilibrium
-toEquilibrium :: DiagnosticInfoBayesian x y -> Bool
-toEquilibrium = equilibrium
-
-equilibriumMap :: [DiagnosticInfoBayesian x y] -> Bool
-equilibriumMap = and . fmap toEquilibrium
-
--- map diagnostics to payoff
-toPayoff :: DiagnosticInfoBayesian x y -> Double
-toPayoff = payoff
-
-payoffMap :: [DiagnosticInfoBayesian x y] -> [Double]
-payoffMap = fmap toPayoff
-
-
-
-----------------------------------------------------------
--- providing the relevant functionality at the type level
--- for show output
-
-data ShowDiagnosticOutput = ShowDiagnosticOutput
-
-instance (Show y, Ord y, Show x) => Apply ShowDiagnosticOutput [DiagnosticInfoBayesian x y] String where
-  apply _ x = showDiagnosticInfoL x
-
-
-data PrintIsEq = PrintIsEq
-
-instance (Show y, Ord y, Show x) => Apply PrintIsEq [DiagnosticInfoBayesian x y] String where
-  apply _ x = checkEqL x
-
--- for the branching operator
-data PrintIsEqMaybe = PrintIsEqMaybe
-
-instance (Show y, Ord y, Show x) => Apply PrintIsEq (Maybe [DiagnosticInfoBayesian x y]) String where
-  apply _ x = checkEqMaybeL x
-
-data PrintOutput = PrintOutput
-
-instance (Show y, Ord y, Show x) => Apply PrintOutput [DiagnosticInfoBayesian x y] String where
-  apply _ x = showDiagnosticInfoL x
-
-data Concat = Concat
-
-instance Apply Concat String (String -> String) where
-  apply _ x = \y -> x ++ "\n NEWGAME: \n" ++ y
-
--- for apply output of equilibrium function
-data Equilibrium = Equilibrium 
-
-instance Apply Equilibrium [DiagnosticInfoBayesian x y] Bool where
-  apply _ x = equilibriumMap x
-
-data And = And
-
-instance Apply And Bool (Bool -> Bool) where
-  apply _ x = \y -> y && x
-
--- for apply output of equilibrium function
-data Payoff = Payoff
-
-instance Apply Payoff [DiagnosticInfoBayesian x y] [Double] where
-  apply _ x = payoffMap x
-
-data Identity = Identity
-
-instance Apply Identity [Double] [Double] where
-  apply _ x = fmap id x
-
 
 ---------------------
 -- main functionality

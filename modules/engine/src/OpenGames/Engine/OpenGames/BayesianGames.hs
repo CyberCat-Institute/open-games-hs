@@ -11,7 +11,8 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
 module OpenGames.Engine.OpenGames.BayesianGames
-  ( StochasticStatefulBayesianOpenGame(..)
+  ( DiagnosticInfoBayesian(..)
+  , StochasticStatefulBayesianOpenGame(..)
   , Agent(..)
   , Payoff(..)
   , dependentDecision
@@ -51,12 +52,26 @@ import OpenGames.Engine.OpenGames hiding (lift)
 import OpenGames.Engine.Optics
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
-import OpenGames.Engine.Diagnostics
-import OpenGames.Engine.Utils
+import OpenGames.Engine.OpenGames.Utils
 
 {-
 Stateful bayesian games
 -}
+
+-- Defining the necessary types for outputting information of a BayesianGame
+data DiagnosticInfoBayesian x y = DiagnosticInfoBayesian
+  { equilibrium     :: Bool
+  , player          :: String
+  , optimalMove     :: y
+  , strategy        :: Stochastic y
+  , optimalPayoff   :: Double
+  , context         :: (y -> Double)
+  , payoff          :: Double
+  , state           :: x
+  , unobservedState :: String}
+
+
+
 
 type StochasticStatefulBayesianOpenGame a b x s y r = OpenGame StochasticStatefulOptic StochasticStatefulContext a b x s y r
 

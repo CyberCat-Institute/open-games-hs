@@ -9,6 +9,7 @@ module OpenGames.Engine.Optics.StochasticStateful
   ) where
 
 import OpenGames.Engine.Optics
+import OpenGames.Engine.Types
 
 import           Control.Monad.State                hiding (state)
 import           Data.HashMap                       as HM hiding (null,map,mapMaybe)
@@ -18,7 +19,6 @@ import           Numeric.Probability.Distribution   hiding (lift)
 -------------------------------------------------------------
 --- replicate the old implementation of a stochastic context
 type Stochastic = T Double
-type Vector = HM.Map String Double
 
 
 data StochasticStatefulOptic s t a b where

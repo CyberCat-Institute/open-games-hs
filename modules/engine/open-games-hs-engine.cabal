@@ -26,6 +26,8 @@ library
       OpenGames.Engine.TLL
   other-modules:
       OpenGames.Engine.OpenGames.Utils
+      OpenGames.Engine.Optics.StatefulKleisli
+      OpenGames.Engine.Types
       Paths_open_games_hs_engine
   hs-source-dirs:
       src

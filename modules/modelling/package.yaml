@@ -14,6 +14,7 @@ library:
   exposed-modules:
     - OpenGames.BayesianModelling.AtomicGames
     - OpenGames.BayesianModelling.Diagnostics
+    - OpenGames.MonteCarloModelling.Diagnostics
 
 dependencies:
     - base >=4.7 && <5

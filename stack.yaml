@@ -5,6 +5,9 @@ packages:
 - modules/modelling
 - modules/preprocessor
 
+extra-deps:
+- monad-bayes-1.1.0
+
 ghc-options:
   "$locals": -fwarn-incomplete-patterns
 

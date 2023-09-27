@@ -26,6 +26,7 @@ library
       OpenGames.Engine.TLL
       OpenGames.Engine.Types
   other-modules:
+      OpenGames.Engine.OpenGames.BayesianMCGames
       OpenGames.Engine.OpenGames.Utils
       Paths_open_games_hs_engine
   hs-source-dirs:
@@ -35,6 +36,7 @@ library
     , comonad
     , hashable
     , hashmap
+    , monad-bayes
     , mtl
     , probability
     , transformers

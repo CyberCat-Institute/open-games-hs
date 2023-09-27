@@ -22,10 +22,11 @@ library:
 
 dependencies:
     - base >=4.7 && <5
-    - mtl
-    - transformers
-    - probability
     - comonad
-    - hashmap
     - hashable
+    - hashmap
+    - monad-bayes
+    - mtl
+    - probability
+    - transformers
     - vector

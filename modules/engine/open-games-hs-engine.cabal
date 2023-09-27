@@ -23,10 +23,10 @@ library
       OpenGames.Engine.OpenGames.Types
       OpenGames.Engine.Optics
       OpenGames.Engine.Optics.StochasticStateful
+      OpenGames.Engine.Optics.StatefulKleisli
       OpenGames.Engine.TLL
   other-modules:
       OpenGames.Engine.OpenGames.Utils
-      OpenGames.Engine.Optics.StatefulKleisli
       OpenGames.Engine.Types
       Paths_open_games_hs_engine
   hs-source-dirs:

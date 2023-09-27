@@ -17,6 +17,7 @@ library:
     - OpenGames.Engine.OpenGames.Types
     - OpenGames.Engine.Optics
     - OpenGames.Engine.Optics.StochasticStateful
+    - OpenGames.Engine.Optics.StatefulKleisli
     - OpenGames.Engine.TLL
 
 dependencies:

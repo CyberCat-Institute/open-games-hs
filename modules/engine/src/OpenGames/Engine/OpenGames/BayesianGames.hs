@@ -47,11 +47,11 @@ import Numeric.Probability.Distribution hiding (map, lift, filter)
 import Unsafe.Coerce
 
 import OpenGames.Engine.OpenGames hiding (lift)
+import OpenGames.Engine.OpenGames.Utils
 import OpenGames.Engine.Optics
 import OpenGames.Engine.Optics.StochasticStateful
 import OpenGames.Engine.TLL
-import OpenGames.Engine.OpenGames.Utils
-import OpenGames.Engine.OpenGames.Types
+import OpenGames.Engine.Types
 
 {-
 Stateful bayesian games

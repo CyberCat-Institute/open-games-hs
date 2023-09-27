@@ -20,14 +20,13 @@ library
   exposed-modules:
       OpenGames.Engine.OpenGames
       OpenGames.Engine.OpenGames.BayesianGames
-      OpenGames.Engine.OpenGames.Types
       OpenGames.Engine.Optics
       OpenGames.Engine.Optics.StochasticStateful
       OpenGames.Engine.Optics.StatefulKleisli
       OpenGames.Engine.TLL
+      OpenGames.Engine.Types
   other-modules:
       OpenGames.Engine.OpenGames.Utils
-      OpenGames.Engine.Types
       Paths_open_games_hs_engine
   hs-source-dirs:
       src

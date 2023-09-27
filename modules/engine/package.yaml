@@ -14,11 +14,11 @@ library:
   exposed-modules:
     - OpenGames.Engine.OpenGames
     - OpenGames.Engine.OpenGames.BayesianGames
-    - OpenGames.Engine.OpenGames.Types
     - OpenGames.Engine.Optics
     - OpenGames.Engine.Optics.StochasticStateful
     - OpenGames.Engine.Optics.StatefulKleisli
     - OpenGames.Engine.TLL
+    - OpenGames.Engine.Types
 
 dependencies:
     - base >=4.7 && <5
